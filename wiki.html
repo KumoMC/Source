@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="KumoMC Wiki - Documentation and Guides">
-    <title>Wiki - KumoMC</title>
+    <title>雲 / Kumo | Wiki</title>
     
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
@@ -30,17 +30,28 @@
     <div class="wrapper">
         <div class="page-header section-dark" style="background-image: url('assets/bg.jpg'); min-height: 100vh;">
             <div class="filter"></div>
-            <div style="padding: 5px; width: 100%; height: 100vh; position: relative; z-index: 3;">
-                <div class="card" style="background: rgba(0, 0, 0, 0.7); border: none; border-radius: 10px; padding: 40px 0 40px 40px; color: white; width: 100%; height: calc(100vh - 10px); overflow-y: auto; display: flex; flex-direction: column;">
-                    <div class="wiki-content" style="max-height: none; overflow-y: visible; flex: 1; overflow-y: auto; padding-right: 40px;">
-                        <h1 style="border-bottom: 1px solid rgba(255,255,255,0.3); padding-bottom: 10px; margin-bottom: 20px; display: flex; align-items: center; gap: 15px;">
+            <div style="padding: 2px; width: 100%; height: 100vh; position: relative; z-index: 3;">
+                <div class="card" style="background: rgba(0, 0, 0, 0.7); border: none; border-radius: 10px; padding: 20px 0 20px 20px; color: white; width: 100%; height: calc(100vh - 4px); overflow-y: auto; display: flex; flex-direction: column;">
+                    <div class="wiki-content" style="max-height: none; overflow-y: visible; flex: 1; overflow-y: auto; padding-right: 20px;">
+                        <h1 style="border-bottom: 1px solid rgba(255,255,255,0.3); padding-bottom: 10px; margin-bottom: 20px; display: flex; align-items: center; justify-content: center; gap: 15px;">
                             <a href="index.html" style="text-decoration: none; transition: opacity 0.3s ease;">
                                 <img src="assets/logo.png" alt="Home" style="height: 40px; width: auto; display: block;">
                             </a>
-                            KumoMC - Wiki 
+                            Wiki 
                         </h1>
                                                 
-                        <p>Want to help out? Please report any missing, incorrect, or outdated information on the <a href="https://discord.gg/RzqTEPwkKt" style="color: #5865f2;">Discord</a>.</p>                                                
+                        <p id="wiki-intro">Want to help out? Please report any missing, incorrect, or outdated information on the <a href="https://discord.gg/RzqTEPwkKt" style="color: #5865f2;">Discord</a>.</p>
+                        
+                        <!-- Content Display Area (Hidden by default) -->
+                        <div id="wiki-content-display" style="display: none;">
+                            <button id="back-to-wiki" class="btn btn-secondary mb-3" style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.3);">
+                                <i class="fas fa-arrow-left"></i> Back to Wiki
+                            </button>
+                            <div id="content-container"></div>
+                        </div>
+                        
+                        <!-- Main Wiki Boxes -->
+                        <div id="wiki-main-content">
                         <div class="row mt-4">
                             <div class="col-md-6 mb-4">
                                 <div class="wiki-box">
@@ -49,18 +60,18 @@
                                         <div class="row">
                                             <div class="col-6">
                                                 <ul class="wiki-links">
-                                                    <li><a href="#">Faction Commands</a></li>
-                                                    <li><a href="#">Faction Power</a></li>
-                                                    <li><a href="#">Faction Roles</a></li>
-                                                    <li><a href="#">Faction Raiding</a></li>
+                                                    <li><a href="#" class="wiki-link" data-section="faction-commands" style="color: #5865f2;">Faction Commands</a></li>
+                                                    <li><a href="#" class="wiki-link" data-section="faction-power" style="color: #ff006e;">Faction DTR & Power</a></li>
+                                                    <li><a href="#" class="wiki-link" data-section="faction-roles" style="color: #ff006e;">Faction Roles</a></li>
+                                                    <li><a href="#" class="wiki-link" data-section="faction-raiding" style="color: #ff006e;">Faction Raiding</a></li>
                                                 </ul>
                                             </div>
                                             <div class="col-6">
                                                 <ul class="wiki-links">
-                                                    <li><a href="#">Faction Warps</a></li>
-                                                    <li><a href="#">Faction Upgrades</a></li>
-                                                    <li><a href="#">Faction Claiming</a></li>
-                                                    <li><a href="#">Faction Quests</a></li>
+                                                    <li><a href="#" class="wiki-link" data-section="faction-warps" style="color: #ff006e;">Faction Warps</a></li>
+                                                    <li><a href="#" class="wiki-link" data-section="faction-upgrades" style="color: #ff006e;">Faction Upgrades</a></li>
+                                                    <li><a href="#" class="wiki-link" data-section="faction-claiming" style="color: #ff006e;">Faction Claiming</a></li>
+                                                    <li><a href="#" class="wiki-link" data-section="faction-quests" style="color: #ff006e;">Faction Quests</a></li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -76,20 +87,20 @@
                                         <div class="row">
                                             <div class="col-6">
                                                 <ul class="wiki-links">
-                                                    <li><a href="#">Black Market</a></li>
-                                                    <li><a href="#" style="color: #ff006e;">Kits & Sacred Kits</a></li>
-                                                    <li><a href="#">Coin Flips</a></li>
-                                                    <li><a href="#">Fishing</a></li>
-                                                    <li><a href="#">Gold Shop</a></li>
+                                                    <li><a href="#" class="wiki-link" data-section="black-market" style="color: #ff006e;">Black Market</a></li>
+                                                    <li><a href="#" class="wiki-link" data-section="kits-sacred-kits" style="color: #ff8800;">Rank Kits & Sacred Kits</a></li>
+                                                    <li><a href="#" class="wiki-link" data-section="coin-flips" style="color: #ff006e;">Coin Flips</a></li>
+                                                    <li><a href="#" class="wiki-link" data-section="fishing" style="color: #ff006e;">Fishing</a></li>
+                                                    <li><a href="#" class="wiki-link" data-section="gold-shop" style="color: #ff006e;">Gold Shop</a></li>
                                                 </ul>
                                             </div>
                                             <div class="col-6">
                                                 <ul class="wiki-links">
-                                                    <li><a href="#">Tutorial</a></li>
-                                                    <li><a href="#">Economy</a></li>
-                                                    <li><a href="#">Worlds</a></li>
-                                                    <li><a href="#" style="color: #EFBF04;">Armor Sets</a></li>
-                                                    <li><a href="#">Jackpot</a></li>
+                                                    <li><a href="#" class="wiki-link" data-section="tutorial" style="color: #ff006e;">Tutorial</a></li>
+                                                    <li><a href="#" class="wiki-link" data-section="economy" style="color: #ff006e;">Economy</a></li>
+                                                    <li><a href="#" class="wiki-link" data-section="worlds" style="color: #ff006e;">Worlds</a></li>
+                                                    <li><a href="#" class="wiki-link" data-section="armor-sets" style="color: #EFBF04;">Armor Sets</a></li>
+                                                    <li><a href="#" class="wiki-link" data-section="jackpot" style="color: #ff006e;">Jackpot</a></li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -106,17 +117,19 @@
                                         <div class="row">
                                             <div class="col-6">
                                                 <ul class="wiki-links">
-                                                    <li><a href="#">Envoys</a></li>
-                                                    <li><a href="#">Meteors</a></li>
-                                                    <li><a href="#">Tournaments</a></li>
-                                                    <li><a href="#">World Bosses</a></li>
+                                                    <li><a href="#" class="wiki-link" data-section="envoys" style="color: #ff006e;">Envoys</a></li>
+                                                    <li><a href="#" class="wiki-link" data-section="meteors" style="color: #ff006e;">Meteors</a></li>
+                                                    <li><a href="#" class="wiki-link" data-section="tournaments" style="color: #ff006e;">Tournaments</a></li>
+                                                    <li><a href="#" class="wiki-link" data-section="world-bosses" style="color: #ff006e;">World Bosses</a></li>
+                                                    <li><a href="#" class="wiki-link" data-section="bloody-hour" style="color: #ff006e;">Bloody Hour</a></li>
                                                 </ul>
                                             </div>
                                             <div class="col-6">
                                                 <ul class="wiki-links">
-                                                    <li><a href="#">Purge</a></li>
-                                                    <li><a href="#">Grace</a></li>
-                                                    <li><a href="#" style="color: #c77dff;">Dungeons</a></li>
+                                                    <li><a href="#" class="wiki-link" data-section="purge" style="color: #ff006e;">Purge</a></li>
+                                                    <li><a href="#" class="wiki-link" data-section="grace" style="color: #ff006e;">Grace</a></li>
+                                                    <li><a href="#" class="wiki-link" data-section="bounties" style="color: #ff006e;">Bounties</a></li>
+                                                    <li><a href="#" class="wiki-link" data-section="dungeons" style="color: #c77dff;">Dungeons</a></li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -131,19 +144,20 @@
                                         <div class="row">
                                             <div class="col-6">
                                                 <ul class="wiki-links">
-                                                    <li><a href="#">Custom Enchantments</a></li>
-                                                    <li><a href="#">Alchemist</a></li>
-                                                    <li><a href="#" style="color: #c77dff;">Battle Pass</a></li>
-                                                    <li><a href="#">Dust</a></li>
-                                                    <li><a href="#">Armor Orbs</a></li>
+                                                    <li><a href="#" class="wiki-link" data-section="custom-enchantments" style="color: #5865f2;">Custom Enchantments</a></li>
+                                                    <li><a href="#" class="wiki-link" data-section="alchemist" style="color: #ff006e;">Alchemist</a></li>
+                                                    <li><a href="#" class="wiki-link" data-section="enchant-runes" style="color: #ff006e;">Enchant Runes</a></li>
+                                                    <li><a href="#" class="wiki-link" data-section="dust" style="color: #ff006e;">Dust</a></li>
+                                                    <li><a href="#" class="wiki-link" data-section="enchant-orbs" style="color: #ff006e;">Enchant Orbs</a></li>
                                                 </ul>
                                             </div>
                                             <div class="col-6">
                                                 <ul class="wiki-links">
-                                                    <li><a href="#">Tempers</a></li>
-                                                    <li><a href="#" style="color: #5865f2;">Skills</a></li>
-                                                    <li><a href="#">Scrolls</a></li>
-                                                    <li><a href="#">Quests</a></li>
+                                                    <li><a href="#" class="wiki-link" data-section="battle-pass" style="color: #ff006e;">Battle Pass</a></li>
+                                                    <li><a href="#" class="wiki-link" data-section="tempers" style="color: #ff006e;">Tempers</a></li>
+                                                    <li><a href="#" class="wiki-link" data-section="skills" style="color: #5865f2;">Skills</a></li>
+                                                    <li><a href="#" class="wiki-link" data-section="scrolls" style="color: #ff006e;">Scrolls</a></li>
+                                                    <li><a href="#" class="wiki-link" data-section="quests" style="color: #ff006e;">Quests</a></li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -151,13 +165,14 @@
                                 </div>
                             </div>
                         </div>
+                        </div><!-- End wiki-main-content -->
                     </div>
                 </div>
             </div>
             
             <!-- Footer Text at Bottom -->
             <div class="footer-text">
-                Copyright 2026 KumoMC | We are not afiliated with Mojang, AB. | support@kumomc.xyz
+                Copyright 2026 KumoMC | We are not affiliated with Mojang, AB. | support@kumomc.xyz
             </div>
             
             <div class="clouds-container">
@@ -171,5 +186,1198 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="js/main.js"></script>
+    
+    <!-- Wiki Navigation Script -->
+    <script>
+        // Wiki content data
+        const wikiContent = {
+            'faction-commands': {
+                title: 'Faction Commands',
+                content: `
+                    <h2>Faction Commands</h2>
+                    <p>Here are all the commands for managing your faction. Use <code style="background: rgba(255,255,255,0.1); padding: 3px 8px; border-radius: 4px;">/f</code> as a shortcut for <code style="background: rgba(255,255,255,0.1); padding: 3px 8px; border-radius: 4px;">/faction</code></p>
+                    
+                    <div style="background: rgba(255,255,255,0.05); padding: 20px; border-radius: 8px; margin: 15px 0;">
+                        <ul style="list-style-type: none; padding-left: 0;">
+                            <li style="padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.1);"><code style="background: rgba(255,255,255,0.1); padding: 3px 8px; border-radius: 4px;">/f create &lt;name&gt; [description]</code> - Create a new faction</li>
+                            <li style="padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.1);"><code style="background: rgba(255,255,255,0.1); padding: 3px 8px; border-radius: 4px;">/f delete [confirm]</code> - Delete your faction (leader only)</li>
+                            <li style="padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.1);"><code style="background: rgba(255,255,255,0.1); padding: 3px 8px; border-radius: 4px;">/f info</code> - View your faction details</li>
+                            <li style="padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.1);"><code style="background: rgba(255,255,255,0.1); padding: 3px 8px; border-radius: 4px;">/f who &lt;player&gt;</code> - View a player's faction</li>
+                            <li style="padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.1);"><code style="background: rgba(255,255,255,0.1); padding: 3px 8px; border-radius: 4px;">/f leave</code> - Leave your current faction</li>
+                            <li style="padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.1);"><code style="background: rgba(255,255,255,0.1); padding: 3px 8px; border-radius: 4px;">/f help [page]</code> - Show command help menu</li>
+                            <li style="padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.1);"><code style="background: rgba(255,255,255,0.1); padding: 3px 8px; border-radius: 4px;">/f invite &lt;player&gt;</code> - Invite a player (leader only)</li>
+                            <li style="padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.1);"><code style="background: rgba(255,255,255,0.1); padding: 3px 8px; border-radius: 4px;">/f accept &lt;faction&gt;</code> - Accept a faction invite</li>
+                            <li style="padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.1);"><code style="background: rgba(255,255,255,0.1); padding: 3px 8px; border-radius: 4px;">/f deny &lt;faction&gt;</code> - Decline a faction invite</li>
+                            <li style="padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.1);"><code style="background: rgba(255,255,255,0.1); padding: 3px 8px; border-radius: 4px;">/f kick &lt;player&gt;</code> - Remove a player (leader only)</li>
+                            <li style="padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.1);"><code style="background: rgba(255,255,255,0.1); padding: 3px 8px; border-radius: 4px;">/f promote &lt;player&gt;</code> - Promote a player (leader only)</li>
+                            <li style="padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.1);"><code style="background: rgba(255,255,255,0.1); padding: 3px 8px; border-radius: 4px;">/f demote &lt;player&gt;</code> - Demote a player (leader only)</li>
+                            <li style="padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.1);"><code style="background: rgba(255,255,255,0.1); padding: 3px 8px; border-radius: 4px;">/f leader &lt;player&gt; [confirm]</code> - Transfer leadership</li>
+                            <li style="padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.1);"><code style="background: rgba(255,255,255,0.1); padding: 3px 8px; border-radius: 4px;">/f roles</code> - View roles and members</li>
+                            <li style="padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.1);"><code style="background: rgba(255,255,255,0.1); padding: 3px 8px; border-radius: 4px;">/f createrole &lt;role&gt;</code> - Create a new role</li>
+                            <li style="padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.1);"><code style="background: rgba(255,255,255,0.1); padding: 3px 8px; border-radius: 4px;">/f deleterole &lt;role&gt;</code> - Delete a role</li>
+                            <li style="padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.1);"><code style="background: rgba(255,255,255,0.1); padding: 3px 8px; border-radius: 4px;">/f claim</code> - Claim your initial chunk (one-time)</li>
+                            <li style="padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.1);"><code style="background: rgba(255,255,255,0.1); padding: 3px 8px; border-radius: 4px;">/f extend</code> - Claim an adjacent chunk (costs 1 power)</li>
+                            <li style="padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.1);"><code style="background: rgba(255,255,255,0.1); padding: 3px 8px; border-radius: 4px;">/f unclaim</code> - Unclaim the current chunk</li>
+                            <li style="padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.1);"><code style="background: rgba(255,255,255,0.1); padding: 3px 8px; border-radius: 4px;">/f show</code> - Show borders for your claims</li>
+                            <li style="padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.1);"><code style="background: rgba(255,255,255,0.1); padding: 3px 8px; border-radius: 4px;">/f map</code> - View faction territory map</li>
+                            <li style="padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.1);"><code style="background: rgba(255,255,255,0.1); padding: 3px 8px; border-radius: 4px;">/f here</code> - Check ownership of current chunk</li>
+                            <li style="padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.1);"><code style="background: rgba(255,255,255,0.1); padding: 3px 8px; border-radius: 4px;">/f home</code> - Teleport to faction home</li>
+                            <li style="padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.1);"><code style="background: rgba(255,255,255,0.1); padding: 3px 8px; border-radius: 4px;">/f sethome</code> - Set faction home (must be in claim)</li>
+                            <li style="padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.1);"><code style="background: rgba(255,255,255,0.1); padding: 3px 8px; border-radius: 4px;">/f balance</code> - View faction's balances</li>
+                            <li style="padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.1);"><code style="background: rgba(255,255,255,0.1); padding: 3px 8px; border-radius: 4px;">/f deposit &lt;silver|gold&gt; &lt;amount|all&gt;</code> - Deposit funds</li>
+                            <li style="padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.1);"><code style="background: rgba(255,255,255,0.1); padding: 3px 8px; border-radius: 4px;">/f withdraw &lt;silver|gold&gt; &lt;amount|all&gt;</code> - Withdraw funds (leader only)</li>
+                            <li style="padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.1);"><code style="background: rgba(255,255,255,0.1); padding: 3px 8px; border-radius: 4px;">/f value &lt;faction&gt;</code> - View faction spawner value in silver</li>
+                            <li style="padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.1);"><code style="background: rgba(255,255,255,0.1); padding: 3px 8px; border-radius: 4px;">/f rename &lt;newName&gt;</code> - Rename your faction</li>
+                            <li style="padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.1);"><code style="background: rgba(255,255,255,0.1); padding: 3px 8px; border-radius: 4px;">/f desc &lt;description&gt;</code> - Set faction description</li>
+                            <li style="padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.1);"><code style="background: rgba(255,255,255,0.1); padding: 3px 8px; border-radius: 4px;">/f ff</code> - Toggle friendly fire</li>
+                            <li style="padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.1);"><code style="background: rgba(255,255,255,0.1); padding: 3px 8px; border-radius: 4px;">/f chat [message]</code> - Toggle faction chat or send message</li>
+                            <li style="padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.1);"><code style="background: rgba(255,255,255,0.1); padding: 3px 8px; border-radius: 4px;">/f announce &lt;message&gt;</code> - Send a faction announcement</li>
+                            <li style="padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.1);"><code style="background: rgba(255,255,255,0.1); padding: 3px 8px; border-radius: 4px;">/f vault</code> - Open faction vault (shared storage)</li>
+                            <li style="padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.1);"><code style="background: rgba(255,255,255,0.1); padding: 3px 8px; border-radius: 4px;">/f upgrades</code> - Open faction upgrades menu</li>
+                            <li style="padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.1);"><code style="background: rgba(255,255,255,0.1); padding: 3px 8px; border-radius: 4px;">/f scoreboard</code> - Toggle faction scoreboard</li>
+                            <li style="padding: 8px 0;"><code style="background: rgba(255,255,255,0.1); padding: 3px 8px; border-radius: 4px;">/f top [page]</code> - View top factions (5 per page)</li>
+                        </ul>
+                    </div>
+                `
+            },
+            'kits-sacred-kits': {
+                title: 'Rank Kits & Sacred Kits',
+                content: `
+                    <h2 style="color: #ff8800; margin-top: 0; font-size: 32px; border-bottom: 2px solid #ff8800; padding-bottom: 10px; margin-bottom: 20px;">Rank Kits & Sacred Kits</h2>
+                    <p style="color: #ccc; margin-bottom: 30px;">Kits provide essential items and equipment to help you get started and progress in the game. Each kit includes armor pieces and weapons with custom enchantments.</p>
+                    
+                    <!-- Rank Kits Section -->
+                    <h3 style="color: #fff; font-size: 24px; margin-top: 30px; margin-bottom: 20px; border-bottom: 1px solid rgba(255,255,255,0.3); padding-bottom: 10px;">Rank Kits</h3>
+                    
+                    <!-- Novice Kit -->
+                    <div style="background: rgba(30,30,35,0.8); padding: 25px; border-radius: 8px; margin-bottom: 25px; border-left: 4px solid #888;">
+                        <h4 style="color: #888; margin-top: 0; font-size: 22px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px; margin-bottom: 15px;">Novice Kit</h4>
+                        <p style="color: #ccc; line-height: 1.6; margin-bottom: 20px;">This kit grants a full Iron armor set and diamond tools with basic enchantments. Available with a 3-hour cooldown.</p>
+                        <table style="width: 100%; border-collapse: collapse; background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.2); border-radius: 4px; overflow: hidden;">
+                            <thead>
+                                <tr style="background: rgba(0,0,0,0.5);">
+                                    <th style="padding: 12px; text-align: left; color: #fff; font-weight: 600; border-bottom: 1px solid rgba(255,255,255,0.2);">Piece</th>
+                                    <th style="padding: 12px; text-align: left; color: #51bcda; font-weight: 600; border-bottom: 1px solid rgba(255,255,255,0.2);">Custom Enchants</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                                    <td style="padding: 10px; color: #c77dff;"><img src="assets/diamond_helmet_enchant_24px.gif" alt="Helmet" style="width: 24px; height: 24px; vertical-align: middle; margin-right: 8px; image-rendering: pixelated;">Helmet</td>
+                                    <td style="padding: 10px; color: #fff;">Unbreaking I</td>
+                                </tr>
+                                <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                                    <td style="padding: 10px; color: #c77dff;"><img src="assets/diamond_chestplate_enchant_24px.gif" alt="Chestplate" style="width: 24px; height: 24px; vertical-align: middle; margin-right: 8px; image-rendering: pixelated;">Chestplate</td>
+                                    <td style="padding: 10px; color: #fff;">Unbreaking I</td>
+                                </tr>
+                                <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                                    <td style="padding: 10px; color: #c77dff;"><img src="assets/diamond_leggings_enchant_24px.gif" alt="Leggings" style="width: 24px; height: 24px; vertical-align: middle; margin-right: 8px; image-rendering: pixelated;">Leggings</td>
+                                    <td style="padding: 10px; color: #fff;">Unbreaking I</td>
+                                </tr>
+                                <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                                    <td style="padding: 10px; color: #c77dff;"><img src="assets/diamond_boots_enchant_24px.gif" alt="Boots" style="width: 24px; height: 24px; vertical-align: middle; margin-right: 8px; image-rendering: pixelated;">Boots</td>
+                                    <td style="padding: 10px; color: #fff;">Unbreaking I</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <!-- Apprentice Kit -->
+                    <div style="background: rgba(30,30,35,0.8); padding: 25px; border-radius: 8px; margin-bottom: 25px; border-left: 4px solid #51bcda;">
+                        <h4 style="color: #51bcda; margin-top: 0; font-size: 22px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px; margin-bottom: 15px;">Apprentice Kit</h4>
+                        <p style="color: #ccc; line-height: 1.6; margin-bottom: 20px;">This kit grants a full Diamond armor set and tools with enhanced enchantments. Available with a 6-hour cooldown.</p>
+                        <table style="width: 100%; border-collapse: collapse; background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.2); border-radius: 4px; overflow: hidden;">
+                            <thead>
+                                <tr style="background: rgba(0,0,0,0.5);">
+                                    <th style="padding: 12px; text-align: left; color: #fff; font-weight: 600; border-bottom: 1px solid rgba(255,255,255,0.2);">Piece</th>
+                                    <th style="padding: 12px; text-align: left; color: #51bcda; font-weight: 600; border-bottom: 1px solid rgba(255,255,255,0.2);">Custom Enchants</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                                    <td style="padding: 10px; color: #c77dff;"><img src="assets/diamond_helmet_enchant_24px.gif" alt="Helmet" style="width: 24px; height: 24px; vertical-align: middle; margin-right: 8px; image-rendering: pixelated;">Helmet</td>
+                                    <td style="padding: 10px; color: #fff;">Protection I, Unbreaking III</td>
+                                </tr>
+                                <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                                    <td style="padding: 10px; color: #c77dff;"><img src="assets/diamond_chestplate_enchant_24px.gif" alt="Chestplate" style="width: 24px; height: 24px; vertical-align: middle; margin-right: 8px; image-rendering: pixelated;">Chestplate</td>
+                                    <td style="padding: 10px; color: #fff;">Protection I, Unbreaking III</td>
+                                </tr>
+                                <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                                    <td style="padding: 10px; color: #c77dff;"><img src="assets/diamond_leggings_enchant_24px.gif" alt="Leggings" style="width: 24px; height: 24px; vertical-align: middle; margin-right: 8px; image-rendering: pixelated;">Leggings</td>
+                                    <td style="padding: 10px; color: #fff;">Protection I, Unbreaking III</td>
+                                </tr>
+                                <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                                    <td style="padding: 10px; color: #c77dff;"><img src="assets/diamond_boots_enchant_24px.gif" alt="Boots" style="width: 24px; height: 24px; vertical-align: middle; margin-right: 8px; image-rendering: pixelated;">Boots</td>
+                                    <td style="padding: 10px; color: #fff;">Protection I, Unbreaking III</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 10px; color: #c77dff;"><img src="assets/diamond_sword_enchant_24px.gif" alt="Sword" style="width: 24px; height: 24px; vertical-align: middle; margin-right: 8px; image-rendering: pixelated;">Sword</td>
+                                    <td style="padding: 10px; color: #fff;">Sharpness I, Unbreaking III</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <!-- Adept Kit -->
+                    <div style="background: rgba(30,30,35,0.8); padding: 25px; border-radius: 8px; margin-bottom: 25px; border-left: 4px solid #dc0000;">
+                        <h4 style="color: #dc0000; margin-top: 0; font-size: 22px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px; margin-bottom: 15px;">Adept Kit</h4>
+                        <p style="color: #ccc; line-height: 1.6; margin-bottom: 20px;">This kit grants a full Diamond armor set and a sword with improved enchantments. Available with a 6-hour cooldown.</p>
+                        <table style="width: 100%; border-collapse: collapse; background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.2); border-radius: 4px; overflow: hidden;">
+                            <thead>
+                                <tr style="background: rgba(0,0,0,0.5);">
+                                    <th style="padding: 12px; text-align: left; color: #fff; font-weight: 600; border-bottom: 1px solid rgba(255,255,255,0.2);">Piece</th>
+                                    <th style="padding: 12px; text-align: left; color: #51bcda; font-weight: 600; border-bottom: 1px solid rgba(255,255,255,0.2);">Custom Enchants</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                                    <td style="padding: 10px; color: #c77dff;"><img src="assets/diamond_helmet_enchant_24px.gif" alt="Helmet" style="width: 24px; height: 24px; vertical-align: middle; margin-right: 8px; image-rendering: pixelated;">Helmet</td>
+                                    <td style="padding: 10px; color: #fff;">Protection II, Unbreaking III</td>
+                                </tr>
+                                <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                                    <td style="padding: 10px; color: #c77dff;"><img src="assets/diamond_chestplate_enchant_24px.gif" alt="Chestplate" style="width: 24px; height: 24px; vertical-align: middle; margin-right: 8px; image-rendering: pixelated;">Chestplate</td>
+                                    <td style="padding: 10px; color: #fff;">Protection II, Unbreaking III</td>
+                                </tr>
+                                <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                                    <td style="padding: 10px; color: #c77dff;"><img src="assets/diamond_leggings_enchant_24px.gif" alt="Leggings" style="width: 24px; height: 24px; vertical-align: middle; margin-right: 8px; image-rendering: pixelated;">Leggings</td>
+                                    <td style="padding: 10px; color: #fff;">Protection II, Unbreaking III</td>
+                                </tr>
+                                <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                                    <td style="padding: 10px; color: #c77dff;"><img src="assets/diamond_boots_enchant_24px.gif" alt="Boots" style="width: 24px; height: 24px; vertical-align: middle; margin-right: 8px; image-rendering: pixelated;">Boots</td>
+                                    <td style="padding: 10px; color: #fff;">Protection II, Unbreaking III</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 10px; color: #c77dff;"><img src="assets/diamond_sword_enchant_24px.gif" alt="Sword" style="width: 24px; height: 24px; vertical-align: middle; margin-right: 8px; image-rendering: pixelated;">Sword</td>
+                                    <td style="padding: 10px; color: #fff;">Sharpness II, Unbreaking III</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <!-- Expert Kit -->
+                    <div style="background: rgba(30,30,35,0.8); padding: 25px; border-radius: 8px; margin-bottom: 25px; border-left: 4px solid #c77dff;">
+                        <h4 style="color: #c77dff; margin-top: 0; font-size: 22px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px; margin-bottom: 15px;">Expert Kit</h4>
+                        <p style="color: #ccc; line-height: 1.6; margin-bottom: 20px;">This kit grants a full Diamond armor set, a sword, and healing potions with advanced enchantments. Available with a 6-hour cooldown.</p>
+                        <table style="width: 100%; border-collapse: collapse; background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.2); border-radius: 4px; overflow: hidden;">
+                            <thead>
+                                <tr style="background: rgba(0,0,0,0.5);">
+                                    <th style="padding: 12px; text-align: left; color: #fff; font-weight: 600; border-bottom: 1px solid rgba(255,255,255,0.2);">Piece</th>
+                                    <th style="padding: 12px; text-align: left; color: #51bcda; font-weight: 600; border-bottom: 1px solid rgba(255,255,255,0.2);">Custom Enchants</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                                    <td style="padding: 10px; color: #c77dff;"><img src="assets/diamond_helmet_enchant_24px.gif" alt="Helmet" style="width: 24px; height: 24px; vertical-align: middle; margin-right: 8px; image-rendering: pixelated;">Helmet</td>
+                                    <td style="padding: 10px; color: #fff;">Protection III, Unbreaking III</td>
+                                </tr>
+                                <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                                    <td style="padding: 10px; color: #c77dff;"><img src="assets/diamond_chestplate_enchant_24px.gif" alt="Chestplate" style="width: 24px; height: 24px; vertical-align: middle; margin-right: 8px; image-rendering: pixelated;">Chestplate</td>
+                                    <td style="padding: 10px; color: #fff;">Protection III, Unbreaking III</td>
+                                </tr>
+                                <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                                    <td style="padding: 10px; color: #c77dff;"><img src="assets/diamond_leggings_enchant_24px.gif" alt="Leggings" style="width: 24px; height: 24px; vertical-align: middle; margin-right: 8px; image-rendering: pixelated;">Leggings</td>
+                                    <td style="padding: 10px; color: #fff;">Protection III, Unbreaking III</td>
+                                </tr>
+                                <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                                    <td style="padding: 10px; color: #c77dff;"><img src="assets/diamond_boots_enchant_24px.gif" alt="Boots" style="width: 24px; height: 24px; vertical-align: middle; margin-right: 8px; image-rendering: pixelated;">Boots</td>
+                                    <td style="padding: 10px; color: #fff;">Protection III, Unbreaking III</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 10px; color: #c77dff;"><img src="assets/diamond_sword_enchant_24px.gif" alt="Sword" style="width: 24px; height: 24px; vertical-align: middle; margin-right: 8px; image-rendering: pixelated;">Sword</td>
+                                    <td style="padding: 10px; color: #fff;">Sharpness III, Unbreaking III</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <!-- Master Kit -->
+                    <div style="background: rgba(30,30,35,0.8); padding: 25px; border-radius: 8px; margin-bottom: 25px; border-left: 4px solid #00ff00;">
+                        <h4 style="color: #00ff00; margin-top: 0; font-size: 22px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px; margin-bottom: 15px;">Master Kit</h4>
+                        <p style="color: #ccc; line-height: 1.6; margin-bottom: 20px;">This kit grants a full Diamond armor set and a sword with master-level enchantments. Available with a 6-hour cooldown.</p>
+                        <table style="width: 100%; border-collapse: collapse; background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.2); border-radius: 4px; overflow: hidden;">
+                            <thead>
+                                <tr style="background: rgba(0,0,0,0.5);">
+                                    <th style="padding: 12px; text-align: left; color: #fff; font-weight: 600; border-bottom: 1px solid rgba(255,255,255,0.2);">Piece</th>
+                                    <th style="padding: 12px; text-align: left; color: #51bcda; font-weight: 600; border-bottom: 1px solid rgba(255,255,255,0.2);">Custom Enchants</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                                    <td style="padding: 10px; color: #c77dff;"><img src="assets/diamond_helmet_enchant_24px.gif" alt="Helmet" style="width: 24px; height: 24px; vertical-align: middle; margin-right: 8px; image-rendering: pixelated;">Helmet</td>
+                                    <td style="padding: 10px; color: #fff;">Protection IV, Unbreaking III</td>
+                                </tr>
+                                <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                                    <td style="padding: 10px; color: #c77dff;"><img src="assets/diamond_chestplate_enchant_24px.gif" alt="Chestplate" style="width: 24px; height: 24px; vertical-align: middle; margin-right: 8px; image-rendering: pixelated;">Chestplate</td>
+                                    <td style="padding: 10px; color: #fff;">Protection IV, Unbreaking III</td>
+                                </tr>
+                                <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                                    <td style="padding: 10px; color: #c77dff;"><img src="assets/diamond_leggings_enchant_24px.gif" alt="Leggings" style="width: 24px; height: 24px; vertical-align: middle; margin-right: 8px; image-rendering: pixelated;">Leggings</td>
+                                    <td style="padding: 10px; color: #fff;">Protection IV, Unbreaking III</td>
+                                </tr>
+                                <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                                    <td style="padding: 10px; color: #c77dff;"><img src="assets/diamond_boots_enchant_24px.gif" alt="Boots" style="width: 24px; height: 24px; vertical-align: middle; margin-right: 8px; image-rendering: pixelated;">Boots</td>
+                                    <td style="padding: 10px; color: #fff;">Protection IV, Unbreaking III</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 10px; color: #c77dff;"><img src="assets/diamond_sword_enchant_24px.gif" alt="Sword" style="width: 24px; height: 24px; vertical-align: middle; margin-right: 8px; image-rendering: pixelated;">Sword</td>
+                                    <td style="padding: 10px; color: #fff;">Sharpness IV, Unbreaking III</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <!-- Sacred Kits Section -->
+                    <h3 style="color: #ff8800; font-size: 24px; margin-top: 40px; margin-bottom: 20px; border-bottom: 1px solid rgba(255,136,0,0.3); padding-bottom: 10px;">Sacred Kits</h3>
+                    
+                    <!-- Sacred Kit -->
+                    <div style="background: rgba(30,30,35,0.8); padding: 25px; border-radius: 8px; margin-bottom: 25px; border-left: 4px solid #ffaa00;">
+                        <h4 style="color: #ffaa00; margin-top: 0; font-size: 22px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px; margin-bottom: 15px;">Sacred Kit</h4>
+                        <p style="color: #ccc; line-height: 1.6; margin-bottom: 20px;">This kit grants a full Diamond armor set and a sword with powerful enchantments. Available with a 12-hour cooldown.</p>
+                        <table style="width: 100%; border-collapse: collapse; background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.2); border-radius: 4px; overflow: hidden;">
+                            <thead>
+                                <tr style="background: rgba(0,0,0,0.5);">
+                                    <th style="padding: 12px; text-align: left; color: #fff; font-weight: 600; border-bottom: 1px solid rgba(255,255,255,0.2);">Piece</th>
+                                    <th style="padding: 12px; text-align: left; color: #51bcda; font-weight: 600; border-bottom: 1px solid rgba(255,255,255,0.2);">Custom Enchants</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                                    <td style="padding: 10px; color: #c77dff;"><img src="assets/diamond_helmet_enchant_24px.gif" alt="Helmet" style="width: 24px; height: 24px; vertical-align: middle; margin-right: 8px; image-rendering: pixelated;">Helmet</td>
+                                    <td style="padding: 10px; color: #fff;">Protection V, Unbreaking V</td>
+                                </tr>
+                                <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                                    <td style="padding: 10px; color: #c77dff;"><img src="assets/diamond_chestplate_enchant_24px.gif" alt="Chestplate" style="width: 24px; height: 24px; vertical-align: middle; margin-right: 8px; image-rendering: pixelated;">Chestplate</td>
+                                    <td style="padding: 10px; color: #fff;">Protection V, Unbreaking V</td>
+                                </tr>
+                                <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                                    <td style="padding: 10px; color: #c77dff;"><img src="assets/diamond_leggings_enchant_24px.gif" alt="Leggings" style="width: 24px; height: 24px; vertical-align: middle; margin-right: 8px; image-rendering: pixelated;">Leggings</td>
+                                    <td style="padding: 10px; color: #fff;">Protection V, Unbreaking V</td>
+                                </tr>
+                                <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                                    <td style="padding: 10px; color: #c77dff;"><img src="assets/diamond_boots_enchant_24px.gif" alt="Boots" style="width: 24px; height: 24px; vertical-align: middle; margin-right: 8px; image-rendering: pixelated;">Boots</td>
+                                    <td style="padding: 10px; color: #fff;">Protection V, Unbreaking V</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 10px; color: #c77dff;"><img src="assets/diamond_sword_enchant_24px.gif" alt="Sword" style="width: 24px; height: 24px; vertical-align: middle; margin-right: 8px; image-rendering: pixelated;">Sword</td>
+                                    <td style="padding: 10px; color: #fff;">Sharpness V, Unbreaking V</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <!-- Hellhound Kit -->
+                    <div style="background: rgba(30,30,35,0.8); padding: 25px; border-radius: 8px; margin-bottom: 25px; border-left: 4px solid #dc0000;">
+                        <h4 style="color: #dc0000; margin-top: 0; font-size: 22px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px; margin-bottom: 15px;">Hellhound Kit</h4>
+                        <p style="color: #ccc; line-height: 1.6; margin-bottom: 20px;">This kit grants a full Diamond armor set, a sword, and Fire Balls with powerful combat enchantments. Available with a 12-hour cooldown.</p>
+                        <table style="width: 100%; border-collapse: collapse; background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.2); border-radius: 4px; overflow: hidden;">
+                            <thead>
+                                <tr style="background: rgba(0,0,0,0.5);">
+                                    <th style="padding: 12px; text-align: left; color: #fff; font-weight: 600; border-bottom: 1px solid rgba(255,255,255,0.2);">Piece</th>
+                                    <th style="padding: 12px; text-align: left; color: #51bcda; font-weight: 600; border-bottom: 1px solid rgba(255,255,255,0.2);">Custom Enchants</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                                    <td style="padding: 10px; color: #c77dff;"><img src="assets/diamond_helmet_enchant_24px.gif" alt="Helmet" style="width: 24px; height: 24px; vertical-align: middle; margin-right: 8px; image-rendering: pixelated;">Helmet</td>
+                                    <td style="padding: 10px; color: #fff;">Protection V, Unbreaking V, Evade III</td>
+                                </tr>
+                                <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                                    <td style="padding: 10px; color: #c77dff;"><img src="assets/diamond_chestplate_enchant_24px.gif" alt="Chestplate" style="width: 24px; height: 24px; vertical-align: middle; margin-right: 8px; image-rendering: pixelated;">Chestplate</td>
+                                    <td style="padding: 10px; color: #fff;">Protection V, Unbreaking V, Evade III</td>
+                                </tr>
+                                <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                                    <td style="padding: 10px; color: #c77dff;"><img src="assets/diamond_leggings_enchant_24px.gif" alt="Leggings" style="width: 24px; height: 24px; vertical-align: middle; margin-right: 8px; image-rendering: pixelated;">Leggings</td>
+                                    <td style="padding: 10px; color: #fff;">Protection V, Unbreaking V, Evade III</td>
+                                </tr>
+                                <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                                    <td style="padding: 10px; color: #c77dff;"><img src="assets/diamond_boots_enchant_24px.gif" alt="Boots" style="width: 24px; height: 24px; vertical-align: middle; margin-right: 8px; image-rendering: pixelated;">Boots</td>
+                                    <td style="padding: 10px; color: #fff;">Protection V, Unbreaking V, Evade III, Speed II</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 10px; color: #c77dff;"><img src="assets/diamond_sword_enchant_24px.gif" alt="Sword" style="width: 24px; height: 24px; vertical-align: middle; margin-right: 8px; image-rendering: pixelated;">Sword</td>
+                                    <td style="padding: 10px; color: #fff;">Sharpness V, Unbreaking V</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <!-- Paladin Kit -->
+                    <div style="background: rgba(30,30,35,0.8); padding: 25px; border-radius: 8px; margin-bottom: 25px; border-left: 4px solid #00ff00;">
+                        <h4 style="color: #00ff00; margin-top: 0; font-size: 22px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px; margin-bottom: 15px;">Paladin Kit</h4>
+                        <p style="color: #ccc; line-height: 1.6; margin-bottom: 20px;">This kit grants a full Diamond armor set and a sword with powerful defensive enchantments. Available with a 12-hour cooldown.</p>
+                        <table style="width: 100%; border-collapse: collapse; background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.2); border-radius: 4px; overflow: hidden;">
+                            <thead>
+                                <tr style="background: rgba(0,0,0,0.5);">
+                                    <th style="padding: 12px; text-align: left; color: #fff; font-weight: 600; border-bottom: 1px solid rgba(255,255,255,0.2);">Piece</th>
+                                    <th style="padding: 12px; text-align: left; color: #51bcda; font-weight: 600; border-bottom: 1px solid rgba(255,255,255,0.2);">Custom Enchants</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                                    <td style="padding: 10px; color: #c77dff;"><img src="assets/diamond_helmet_enchant_24px.gif" alt="Helmet" style="width: 24px; height: 24px; vertical-align: middle; margin-right: 8px; image-rendering: pixelated;">Helmet</td>
+                                    <td style="padding: 10px; color: #fff;">Protection V, Unbreaking V</td>
+                                </tr>
+                                <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                                    <td style="padding: 10px; color: #c77dff;"><img src="assets/diamond_chestplate_enchant_24px.gif" alt="Chestplate" style="width: 24px; height: 24px; vertical-align: middle; margin-right: 8px; image-rendering: pixelated;">Chestplate</td>
+                                    <td style="padding: 10px; color: #fff;">Protection V, Unbreaking V</td>
+                                </tr>
+                                <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                                    <td style="padding: 10px; color: #c77dff;"><img src="assets/diamond_leggings_enchant_24px.gif" alt="Leggings" style="width: 24px; height: 24px; vertical-align: middle; margin-right: 8px; image-rendering: pixelated;">Leggings</td>
+                                    <td style="padding: 10px; color: #fff;">Protection V, Unbreaking V</td>
+                                </tr>
+                                <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                                    <td style="padding: 10px; color: #c77dff;"><img src="assets/diamond_boots_enchant_24px.gif" alt="Boots" style="width: 24px; height: 24px; vertical-align: middle; margin-right: 8px; image-rendering: pixelated;">Boots</td>
+                                    <td style="padding: 10px; color: #fff;">Protection V, Unbreaking V</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 10px; color: #c77dff;"><img src="assets/diamond_sword_enchant_24px.gif" alt="Sword" style="width: 24px; height: 24px; vertical-align: middle; margin-right: 8px; image-rendering: pixelated;">Sword</td>
+                                    <td style="padding: 10px; color: #fff;">Sharpness V, Unbreaking V</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <!-- Enchanter Kit -->
+                    <div style="background: rgba(30,30,35,0.8); padding: 25px; border-radius: 8px; margin-bottom: 25px; border-left: 4px solid #c77dff;">
+                        <h4 style="color: #c77dff; margin-top: 0; font-size: 22px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px; margin-bottom: 15px;">Enchanter Kit</h4>
+                        <p style="color: #ccc; line-height: 1.6; margin-bottom: 20px;">This kit grants a sword and various enchanting materials including sealed books, book bundles, stardust, and risky disenchant scrolls. Available with a 12-hour cooldown.</p>
+                        <table style="width: 100%; border-collapse: collapse; background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.2); border-radius: 4px; overflow: hidden;">
+                            <thead>
+                                <tr style="background: rgba(0,0,0,0.5);">
+                                    <th style="padding: 12px; text-align: left; color: #fff; font-weight: 600; border-bottom: 1px solid rgba(255,255,255,0.2);">Piece</th>
+                                    <th style="padding: 12px; text-align: left; color: #51bcda; font-weight: 600; border-bottom: 1px solid rgba(255,255,255,0.2);">Custom Enchants</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td style="padding: 10px; color: #c77dff;"><img src="assets/diamond_sword_enchant_24px.gif" alt="Sword" style="width: 24px; height: 24px; vertical-align: middle; margin-right: 8px; image-rendering: pixelated;">Sword</td>
+                                    <td style="padding: 10px; color: #fff;">Sharpness V, Unbreaking V</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                `
+            },
+            'armor-sets': {
+                title: 'Armor Sets',
+                content: `
+                    <h2 style="color: #EFBF04; margin-top: 0; font-size: 32px; border-bottom: 2px solid #EFBF04; padding-bottom: 10px; margin-bottom: 10px;">Armor Sets</h2>
+                    <p>Each custom armor set grants permanent Speed II.</p>
+                    <!-- Cinder Set -->
+                    <div style="background: rgba(30,30,35,0.8); padding: 20px; border-radius: 8px; border-bottom: 3px solid #ff6400; margin-bottom: 20px; display: flex; gap: 20px; align-items: flex-start;">
+                        <div style="flex: 1;">
+                            <h3 style="color: #ff6400; margin-top: 0; font-size: 24px;">Cinder Set</h3>
+                            <p style="color: #ccc; line-height: 1.6; font-size: 14px;">
+                                Craftable. Can also be found in crate chests and/or lootbags.
+                            </p>
+                            <ul style="color: #aaa; margin: 10px 0; padding-left: 20px;">
+                                <li>25% chance to set attackers on fire for 3 seconds</li>
+                                <li>Negates Arsonist enchant bonus damage</li>
+                                <li>10% Damage Reduction</li>
+                            </ul>
+                        </div>
+                        <div style="flex-shrink: 0; padding: 15px; background: rgba(0,0,0,0.4); border-radius: 8px;">
+                            <img src="assets/cinder-set.png" alt="Cinder Set" style="max-width: 160px; width: 100%; height: auto; image-rendering: pixelated; display: block;">
+                        </div>
+                    </div>
+                    
+                    <!-- Exodia Set -->
+                    <div style="background: rgba(30,30,35,0.8); padding: 20px; border-radius: 8px; border-bottom: 3px solid #00ff00; margin-bottom: 20px; display: flex; gap: 20px; align-items: flex-start;">
+                        <div style="flex: 1;">
+                            <h3 style="color: #00ff00; margin-top: 0; font-size: 24px;">Exodia Set</h3>
+                            <p style="color: #ccc; line-height: 1.6; font-size: 14px;">
+                                Purchasable from the <a href="#" class="wiki-link" data-section="gold-shop" style="color: #00ff00; text-decoration: underline;">Gold Shop</a>. Can also be found in crate chests and/or lootbags.
+                            </p>
+                            <ul style="color: #aaa; margin: 10px 0; padding-left: 20px;">
+                                <li>Rainbow color cycling when taking damage</li>
+                                <li>Survive one fatal blow</li>
+                                <li>15% Damage Reduction</li>
+                            </ul>
+                        </div>
+                        <div style="flex-shrink: 0; padding: 15px; background: rgba(0,0,0,0.4); border-radius: 8px;">
+                            <img src="assets/exodia.png" alt="Exodia Set" style="max-width: 160px; width: 100%; height: auto; image-rendering: pixelated; display: block;">
+                        </div>
+                    </div>
+                    
+                    <!-- Rune Set -->
+                    <div style="background: rgba(30,30,35,0.8); padding: 20px; border-radius: 8px; border-bottom: 3px solid #8a2be2; margin-bottom: 20px; display: flex; gap: 20px; align-items: flex-start;">
+                        <div style="flex: 1;">
+                            <h3 style="color: #8a2be2; margin-top: 0; font-size: 24px;">Rune Set</h3>
+                            <p style="color: #ccc; line-height: 1.6; font-size: 14px;">
+                                Craftable. Can also be found in crate chests and/or lootbags.
+                            </p>
+                            <ul style="color: #aaa; margin: 10px 0; padding-left: 20px;">
+                                <li>Generate magic energy in combat (50 max)</li>
+                                <li>Activate: +20% damage vs custom armor sets (10s)</li>
+                                <li>10% Damage Reduction</li>
+                            </ul>
+                        </div>
+                        <div style="flex-shrink: 0; padding: 15px; background: rgba(0,0,0,0.4); border-radius: 8px;">
+                            <img src="assets/rune-set.png" alt="Rune Set" style="max-width: 160px; width: 100%; height: auto; image-rendering: pixelated; display: block;">
+                        </div>
+                    </div>
+                    
+                    <!-- Cobble Set -->
+                    <div style="background: rgba(30,30,35,0.8); padding: 20px; border-radius: 8px; border-bottom: 3px solid #505050; margin-bottom: 20px; display: flex; gap: 20px; align-items: flex-start;">
+                        <div style="flex: 1;">
+                            <h3 style="color: #888; margin-top: 0; font-size: 24px;">Cobble Set</h3>
+                            <p style="color: #ccc; line-height: 1.6; font-size: 14px;">
+                                Can be found in crate chests and/or lootbags.
+                            </p>
+                            <ul style="color: #aaa; margin: 10px 0; padding-left: 20px;">
+                                <li>Haste II</li>
+                                <li>Night Vision</li>
+                                <li>25% chance to turn cobblestone into ores</li>
+                            </ul>
+                        </div>
+                        <div style="flex-shrink: 0; padding: 15px; background: rgba(0,0,0,0.4); border-radius: 8px;">
+                            <img src="assets/cobble-set.png" alt="Cobble Set" style="max-width: 160px; width: 100%; height: auto; image-rendering: pixelated; display: block;">
+                        </div>
+                    </div>
+                    
+                    <!-- Kyurem Set -->
+                    <div style="background: rgba(30,30,35,0.8); padding: 20px; border-radius: 8px; border-bottom: 3px solid #0064ff; margin-bottom: 20px; display: flex; gap: 20px; align-items: flex-start;">
+                        <div style="flex: 1;">
+                            <h3 style="color: #0064ff; margin-top: 0; font-size: 24px;">Kyurem Set</h3>
+                            <p style="color: #ccc; line-height: 1.6; font-size: 14px;">
+                                Achievable from KOTH. Can also be found in crate chests and/or lootbags.
+                            </p>
+                            <ul style="color: #aaa; margin: 10px 0; padding-left: 20px;">
+                                <li>Critical hits apply Slowness I for 2 seconds</li>
+                                <li>On kill: shockwave knocks back enemies (3-block radius)</li>
+                                <li>15% Damage Reduction</li>
+                            </ul>
+                        </div>
+                        <div style="flex-shrink: 0; padding: 15px; background: rgba(0,0,0,0.4); border-radius: 8px;">
+                            <img src="assets/kyurem-set.png" alt="Kyurem Set" style="max-width: 160px; width: 100%; height: auto; image-rendering: pixelated; display: block;">
+                        </div>
+                    </div>
+                    
+                    <!-- Nautilus Set -->
+                    <div style="background: rgba(30,30,35,0.8); padding: 20px; border-radius: 8px; border-bottom: 3px solid #00ced1; margin-bottom: 20px; display: flex; gap: 20px; align-items: flex-start;">
+                        <div style="flex: 1;">
+                            <h3 style="color: #00ced1; margin-top: 0; font-size: 24px;">Nautilus Set</h3>
+                            <p style="color: #ccc; line-height: 1.6; font-size: 14px;">
+                                Craftable. Can also be found in crate chests and/or lootbags.
+                            </p>
+                            <ul style="color: #aaa; margin: 10px 0; padding-left: 20px;">
+                                <li>+50% damage to spawner/dungeon/fished mobs</li>
+                                <li>+25% damage to minibosses and bosses</li>
+                                <li>10% Damage Reduction</li>
+                            </ul>
+                        </div>
+                        <div style="flex-shrink: 0; padding: 15px; background: rgba(0,0,0,0.4); border-radius: 8px;">
+                            <img src="assets/nautilus-set.png" alt="Nautilus Set" style="max-width: 160px; width: 100%; height: auto; image-rendering: pixelated; display: block;">
+                        </div>
+                    </div>
+                    
+                    <!-- Fable Set -->
+                    <div style="background: rgba(30,30,35,0.8); padding: 20px; border-radius: 8px; border-bottom: 3px solid #daa520; margin-bottom: 20px; display: flex; gap: 20px; align-items: flex-start;">
+                        <div style="flex: 1;">
+                            <h3 style="color: #daa520; margin-top: 0; font-size: 24px;">Fable Set</h3>
+                            <p style="color: #ccc; line-height: 1.6; font-size: 14px;">
+                                Can be found in crate chests and/or lootbags.
+                            </p>
+                            <ul style="color: #aaa; margin: 10px 0; padding-left: 20px;">
+                                <li>Regeneration I</li>
+                                <li>Heal 3 HP on kill</li>
+                                <li>5% Damage Reduction</li>
+                            </ul>
+                        </div>
+                        <div style="flex-shrink: 0; padding: 15px; background: rgba(0,0,0,0.4); border-radius: 8px;">
+                            <img src="assets/fable-set.png" alt="Fable Set" style="max-width: 160px; width: 100%; height: auto; image-rendering: pixelated; display: block;">
+                        </div>
+                    </div>
+                    
+                    <!-- Yveltal Set -->
+                    <div style="background: rgba(30,30,35,0.8); padding: 20px; border-radius: 8px; border-bottom: 3px solid #dc0000; margin-bottom: 20px; display: flex; gap: 20px; align-items: flex-start;">
+                        <div style="flex: 1;">
+                            <h3 style="color: #dc0000; margin-top: 0; font-size: 24px;">Yveltal Set</h3>
+                            <p style="color: #ccc; line-height: 1.6; font-size: 14px;">
+                                Achievable from KOTH. Can also be found in crate chests and/or lootbags.
+                            </p>
+                            <ul style="color: #aaa; margin: 10px 0; padding-left: 20px;">
+                                <li>Consecutive hits: +1s Regeneration I (max 5s)</li>
+                                <li>Heal 5 HP on kill</li>
+                                <li>15% Damage Reduction</li>
+                            </ul>
+                        </div>
+                        <div style="flex-shrink: 0; padding: 15px; background: rgba(0,0,0,0.4); border-radius: 8px;">
+                            <img src="assets/yveltal-set.png" alt="Yveltal Set" style="max-width: 160px; width: 100%; height: auto; image-rendering: pixelated; display: block;">
+                        </div>
+                    </div>
+                    
+                    <!-- Yeti Set -->
+                    <div style="background: rgba(30,30,35,0.8); padding: 20px; border-radius: 8px; border-bottom: 3px solid #c0c0c0; margin-bottom: 20px; display: flex; gap: 20px; align-items: flex-start;">
+                        <div style="flex: 1;">
+                            <h3 style="color: #c0c0c0; margin-top: 0; font-size: 24px;">Yeti Set</h3>
+                            <p style="color: #ccc; line-height: 1.6; font-size: 14px;">
+                                Purchasable from the <a href="#" class="wiki-link" data-section="gold-shop" style="color: #c0c0c0; text-decoration: underline;">Gold Shop</a>. Can also be found in crate chests and/or lootbags.
+                            </p>
+                            <ul style="color: #aaa; margin: 10px 0; padding-left: 20px;">
+                                <li>Resistance I</li>
+                                <li>15% chance to apply Slowness when hit (2s)</li>
+                                <li>Heal 3 HP on kill</li>
+                                <li>10% Damage Reduction</li>
+                            </ul>
+                        </div>
+                        <div style="flex-shrink: 0; padding: 15px; background: rgba(0,0,0,0.4); border-radius: 8px;">
+                            <img src="assets/yeti-set.png" alt="Yeti Set" style="max-width: 160px; width: 100%; height: auto; image-rendering: pixelated; display: block;">
+                        </div>
+                    </div>
+                `
+            },
+            'dungeons': {
+                title: 'Dungeons',
+                content: `
+                    <h2 style="color: #c77dff;">Dungeons</h2>
+                    <p>Dungeons are player-started events filled with challenging enemies and valuable rewards. They can be created using Dungeon Keys and accessed with <code style="background: rgba(255,255,255,0.1); padding: 3px 6px; border-radius: 3px;">/dungeons</code>. When used, a random dungeon is selected, and one of three difficulty modifiers (Easy, Medium, or Hard) is applied. These difficulties affect mob and boss stats, and loot.</p>
+                `
+            },
+        };
+        
+        // Override for faction-power to show custom title
+        wikiContent['faction-power'] = {
+            title: 'Faction DTR & Power',
+            content: `
+                <h2>Faction DTR & Power</h2>
+                <div style="background: rgba(255,255,255,0.05); padding: 20px; border-radius: 8px; margin: 15px 0;">
+                    <p><i class="fas fa-info-circle"></i> This section is currently being updated with detailed information.</p>
+                    <p>Check back soon or ask on our <a href="https://discord.gg/RzqTEPwkKt" style="color: #5865f2;">Discord</a> for more information!</p>
+                </div>
+            `
+        };
+        
+        // Custom Enchantments Page
+        wikiContent['custom-enchantments'] = {
+            title: 'Custom Enchantments',
+            content: `
+                <h2 style="color: #c77dff; margin-top: 0; font-size: 32px; border-bottom: 2px solid #c77dff; padding-bottom: 10px; margin-bottom: 30px;">Custom Enchantments</h2>
+                <p style="color: #ccc; margin-bottom: 30px;">Custom enchantments enhance your weapons, armor, tools, and bows with powerful abilities. Enchantments are organized by rarity: <span style="color: #5555FF;">Rare</span>, <span style="color: #FF55FF;">Mythic</span>, <span style="color: #FFAA00;">Cosmic</span>, <span style="color: #55FFFF;">Divine</span>, and <span style="color: #AA0000;">Shadow</span>.</p>
+                
+                <!-- Shadow Enchants -->
+                <h3 style="color: #AA0000; font-size: 24px; margin-top: 40px; margin-bottom: 20px; border-bottom: 1px solid rgba(170,0,0,0.3); padding-bottom: 10px;">Shadow Enchants</h3>
+                <div style="background: rgba(0,0,0,0.4); border-radius: 8px; overflow: hidden; margin-bottom: 30px;">
+                    <table style="width: 100%; border-collapse: collapse;">
+                        <thead>
+                            <tr style="background: rgba(0,0,0,0.6);">
+                                <th style="padding: 12px; text-align: left; color: #fff; font-weight: 600; border-bottom: 2px solid rgba(170,0,0,0.5);">Name</th>
+                                <th style="padding: 12px; text-align: left; color: #fff; font-weight: 600; border-bottom: 2px solid rgba(170,0,0,0.5);">Applies to</th>
+                                <th style="padding: 12px; text-align: left; color: #fff; font-weight: 600; border-bottom: 2px solid rgba(170,0,0,0.5);">Max Level</th>
+                                <th style="padding: 12px; text-align: left; color: #fff; font-weight: 600; border-bottom: 2px solid rgba(170,0,0,0.5);">Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                                <td style="padding: 12px; color: #AA0000; font-weight: 600;">Shadow Cloak</td>
+                                <td style="padding: 12px; color: #88ccff;"><img src="assets/diamond_chestplate_enchant_24px.gif" alt="Armor" style="width: 24px; height: 24px; vertical-align: middle; margin-right: 8px; image-rendering: pixelated;">Armor</td>
+                                <td style="padding: 12px; color: #AA0000;">III</td>
+                                <td style="padding: 12px; color: #ccc;">Chance to become invisible when taking damage from entities.</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                                <td style="padding: 12px; color: #AA0000; font-weight: 600;">Devil's Greed</td>
+                                <td style="padding: 12px; color: #88ccff;"><img src="assets/diamond_sword_enchant_24px.gif" alt="Weapon" style="width: 24px; height: 24px; vertical-align: middle; margin-right: 8px; image-rendering: pixelated;">Weapon</td>
+                                <td style="padding: 12px; color: #AA0000;">I</td>
+                                <td style="padding: 12px; color: #ccc;">Slightly higher chance to deal much more damage than Avarice. Costs 1 heart (2 HP) per proc. Requires Avarice II to apply.</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                                <td style="padding: 12px; color: #AA0000; font-weight: 600;">Pestilence</td>
+                                <td style="padding: 12px; color: #88ccff;"><img src="assets/diamond_sword_enchant_24px.gif" alt="Weapon" style="width: 24px; height: 24px; vertical-align: middle; margin-right: 8px; image-rendering: pixelated;">Weapon</td>
+                                <td style="padding: 12px; color: #AA0000;">V</td>
+                                <td style="padding: 12px; color: #ccc;">Chance to apply a deadly plague effect to enemies.</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                                <td style="padding: 12px; color: #AA0000; font-weight: 600;">Spiked</td>
+                                <td style="padding: 12px; color: #88ccff;"><img src="assets/diamond_helmet_enchant_24px.gif" alt="Helmet" style="width: 24px; height: 24px; vertical-align: middle; margin-right: 8px; image-rendering: pixelated;">Helmet</td>
+                                <td style="padding: 12px; color: #AA0000;">I</td>
+                                <td style="padding: 12px; color: #ccc;">A helmet specific enchant with a 1% chance to completely negate and return damage back to the attacker.</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                                <td style="padding: 12px; color: #AA0000; font-weight: 600;">Avarice</td>
+                                <td style="padding: 12px; color: #88ccff;"><img src="assets/diamond_sword_enchant_24px.gif" alt="Weapon" style="width: 24px; height: 24px; vertical-align: middle; margin-right: 8px; image-rendering: pixelated;">Weapon</td>
+                                <td style="padding: 12px; color: #AA0000;">II</td>
+                                <td style="padding: 12px; color: #ccc;">Chance to deal double damage when you are at full health.</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                                <td style="padding: 12px; color: #AA0000; font-weight: 600;">Haunt</td>
+                                <td style="padding: 12px; color: #88ccff;"><img src="assets/diamond_sword_enchant_24px.gif" alt="Weapon" style="width: 24px; height: 24px; vertical-align: middle; margin-right: 8px; image-rendering: pixelated;">Weapon</td>
+                                <td style="padding: 12px; color: #AA0000;">I</td>
+                                <td style="padding: 12px; color: #ccc;">Chance to apply negative effects to enemies on hit.</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                                <td style="padding: 12px; color: #AA0000; font-weight: 600;">Backstab</td>
+                                <td style="padding: 12px; color: #88ccff;"><img src="assets/diamond_sword_enchant_24px.gif" alt="Weapon" style="width: 24px; height: 24px; vertical-align: middle; margin-right: 8px; image-rendering: pixelated;">Weapon</td>
+                                <td style="padding: 12px; color: #AA0000;">III</td>
+                                <td style="padding: 12px; color: #ccc;">Attacks from behind deal massive bonus damage.</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 12px; color: #AA0000; font-weight: 600;">Decay</td>
+                                <td style="padding: 12px; color: #88ccff;"><img src="assets/diamond_sword_enchant_24px.gif" alt="Weapon" style="width: 24px; height: 24px; vertical-align: middle; margin-right: 8px; image-rendering: pixelated;">Weapon</td>
+                                <td style="padding: 12px; color: #AA0000;">III</td>
+                                <td style="padding: 12px; color: #ccc;">Chance to apply wither effect to enemies on hit.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <!-- Divine Enchants -->
+                <h3 style="color: #55FFFF; font-size: 24px; margin-top: 40px; margin-bottom: 20px; border-bottom: 1px solid rgba(85,255,255,0.3); padding-bottom: 10px;">Divine Enchants</h3>
+                <div style="background: rgba(0,0,0,0.4); border-radius: 8px; overflow: hidden; margin-bottom: 30px;">
+                    <table style="width: 100%; border-collapse: collapse;">
+                        <thead>
+                            <tr style="background: rgba(0,0,0,0.6);">
+                                <th style="padding: 12px; text-align: left; color: #fff; font-weight: 600; border-bottom: 2px solid rgba(85,255,255,0.5);">Name</th>
+                                <th style="padding: 12px; text-align: left; color: #fff; font-weight: 600; border-bottom: 2px solid rgba(85,255,255,0.5);">Applies to</th>
+                                <th style="padding: 12px; text-align: left; color: #fff; font-weight: 600; border-bottom: 2px solid rgba(85,255,255,0.5);">Max Level</th>
+                                <th style="padding: 12px; text-align: left; color: #fff; font-weight: 600; border-bottom: 2px solid rgba(85,255,255,0.5);">Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                                <td style="padding: 12px; color: #55FFFF; font-weight: 600;">Divine Enlightened</td>
+                                <td style="padding: 12px; color: #88ccff;"><img src="assets/diamond_chestplate_enchant_24px.gif" alt="Armor" style="width: 24px; height: 24px; vertical-align: middle; margin-right: 8px; image-rendering: pixelated;">Armor</td>
+                                <td style="padding: 12px; color: #55FFFF;">I</td>
+                                <td style="padding: 12px; color: #ccc;">Chance to heal a large portion of incoming damage when hit. Requires Enlightened III to apply.</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                                <td style="padding: 12px; color: #55FFFF; font-weight: 600;">Ward</td>
+                                <td style="padding: 12px; color: #88ccff;"><img src="assets/diamond_chestplate_enchant_24px.gif" alt="Armor" style="width: 24px; height: 24px; vertical-align: middle; margin-right: 8px; image-rendering: pixelated;">Armor</td>
+                                <td style="padding: 12px; color: #55FFFF;">III</td>
+                                <td style="padding: 12px; color: #ccc;">Chance to resist and remove all negative effects when they would be applied.</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                                <td style="padding: 12px; color: #55FFFF; font-weight: 600;">Rebirth</td>
+                                <td style="padding: 12px; color: #88ccff;"><img src="assets/diamond_leggings_enchant_24px.gif" alt="Leggings" style="width: 24px; height: 24px; vertical-align: middle; margin-right: 8px; image-rendering: pixelated;">Leggings</td>
+                                <td style="padding: 12px; color: #55FFFF;">I</td>
+                                <td style="padding: 12px; color: #ccc;">An attack that would kill you instead heals you to 65% HP and removes this enchant.</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                                <td style="padding: 12px; color: #55FFFF; font-weight: 600;">Divine Light</td>
+                                <td style="padding: 12px; color: #88ccff;"><img src="assets/diamond_sword_enchant_24px.gif" alt="Weapon" style="width: 24px; height: 24px; vertical-align: middle; margin-right: 8px; image-rendering: pixelated;">Weapon</td>
+                                <td style="padding: 12px; color: #55FFFF;">III</td>
+                                <td style="padding: 12px; color: #ccc;">Critical hits heal you and nearby allies.</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 12px; color: #55FFFF; font-weight: 600;">Holy Armament</td>
+                                <td style="padding: 12px; color: #88ccff;"><img src="assets/diamond_sword_enchant_24px.gif" alt="Weapon" style="width: 24px; height: 24px; vertical-align: middle; margin-right: 8px; image-rendering: pixelated;">Weapon</td>
+                                <td style="padding: 12px; color: #55FFFF;">III</td>
+                                <td style="padding: 12px; color: #ccc;">Has a chance that increases per level to deal double damage to bosses and minibosses.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <!-- Cosmic Enchants -->
+                <h3 style="color: #FFAA00; font-size: 24px; margin-top: 40px; margin-bottom: 20px; border-bottom: 1px solid rgba(255,170,0,0.3); padding-bottom: 10px;">Cosmic Enchants</h3>
+                <div style="background: rgba(0,0,0,0.4); border-radius: 8px; overflow: hidden; margin-bottom: 30px;">
+                    <table style="width: 100%; border-collapse: collapse;">
+                        <thead>
+                            <tr style="background: rgba(0,0,0,0.6);">
+                                <th style="padding: 12px; text-align: left; color: #fff; font-weight: 600; border-bottom: 2px solid rgba(255,170,0,0.5);">Name</th>
+                                <th style="padding: 12px; text-align: left; color: #fff; font-weight: 600; border-bottom: 2px solid rgba(255,170,0,0.5);">Applies to</th>
+                                <th style="padding: 12px; text-align: left; color: #fff; font-weight: 600; border-bottom: 2px solid rgba(255,170,0,0.5);">Max Level</th>
+                                <th style="padding: 12px; text-align: left; color: #fff; font-weight: 600; border-bottom: 2px solid rgba(255,170,0,0.5);">Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                                <td style="padding: 12px; color: #FFAA00; font-weight: 600;">Evade</td>
+                                <td style="padding: 12px; color: #88ccff;"><img src="assets/diamond_chestplate_enchant_24px.gif" alt="Armor" style="width: 24px; height: 24px; vertical-align: middle; margin-right: 8px; image-rendering: pixelated;">Armor</td>
+                                <td style="padding: 12px; color: #FFAA00;">V</td>
+                                <td style="padding: 12px; color: #ccc;">Chance to completely dodge incoming attacks from entities.</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                                <td style="padding: 12px; color: #FFAA00; font-weight: 600;">Berserk</td>
+                                <td style="padding: 12px; color: #88ccff;"><img src="assets/diamond_sword_enchant_24px.gif" alt="Weapon" style="width: 24px; height: 24px; vertical-align: middle; margin-right: 8px; image-rendering: pixelated;">Weapon</td>
+                                <td style="padding: 12px; color: #FFAA00;">V</td>
+                                <td style="padding: 12px; color: #ccc;">Chance to gain mining fatigue and strength when attacking in combat.</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                                <td style="padding: 12px; color: #FFAA00; font-weight: 600;">Sunder</td>
+                                <td style="padding: 12px; color: #88ccff;"><img src="assets/diamond_sword_enchant_24px.gif" alt="Weapon" style="width: 24px; height: 24px; vertical-align: middle; margin-right: 8px; image-rendering: pixelated;">Weapon</td>
+                                <td style="padding: 12px; color: #FFAA00;">I</td>
+                                <td style="padding: 12px; color: #ccc;">Chance to ignore enemy defense when attacking.</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                                <td style="padding: 12px; color: #FFAA00; font-weight: 600;">Adrenaline</td>
+                                <td style="padding: 12px; color: #88ccff;"><img src="assets/diamond_chestplate_enchant_24px.gif" alt="Armor" style="width: 24px; height: 24px; vertical-align: middle; margin-right: 8px; image-rendering: pixelated;">Armor</td>
+                                <td style="padding: 12px; color: #FFAA00;">V</td>
+                                <td style="padding: 12px; color: #ccc;">Grants speed and strength when health is low.</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                                <td style="padding: 12px; color: #FFAA00; font-weight: 600;">Life Steal</td>
+                                <td style="padding: 12px; color: #88ccff;"><img src="assets/diamond_sword_enchant_24px.gif" alt="Weapon" style="width: 24px; height: 24px; vertical-align: middle; margin-right: 8px; image-rendering: pixelated;">Weapon</td>
+                                <td style="padding: 12px; color: #FFAA00;">III</td>
+                                <td style="padding: 12px; color: #ccc;">Heals you every time you deal damage to an enemy.</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                                <td style="padding: 12px; color: #FFAA00; font-weight: 600;">Fatal</td>
+                                <td style="padding: 12px; color: #88ccff;"><img src="assets/diamond_sword_enchant_24px.gif" alt="Weapon" style="width: 24px; height: 24px; vertical-align: middle; margin-right: 8px; image-rendering: pixelated;">Weapon</td>
+                                <td style="padding: 12px; color: #FFAA00;">V</td>
+                                <td style="padding: 12px; color: #ccc;">Increases critical hit chance and damage.</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                                <td style="padding: 12px; color: #FFAA00; font-weight: 600;">Execute</td>
+                                <td style="padding: 12px; color: #88ccff;"><img src="assets/diamond_sword_enchant_24px.gif" alt="Weapon" style="width: 24px; height: 24px; vertical-align: middle; margin-right: 8px; image-rendering: pixelated;">Weapon</td>
+                                <td style="padding: 12px; color: #FFAA00;">V</td>
+                                <td style="padding: 12px; color: #ccc;">Deals bonus damage to low-health enemies.</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                                <td style="padding: 12px; color: #FFAA00; font-weight: 600;">Fortress</td>
+                                <td style="padding: 12px; color: #88ccff;"><img src="assets/diamond_chestplate_enchant_24px.gif" alt="Armor" style="width: 24px; height: 24px; vertical-align: middle; margin-right: 8px; image-rendering: pixelated;">Armor</td>
+                                <td style="padding: 12px; color: #FFAA00;">III</td>
+                                <td style="padding: 12px; color: #ccc;">Reduces damage taken and protects against armor durability loss and has a chance to repel bleed attacks.</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                                <td style="padding: 12px; color: #FFAA00; font-weight: 600;">Arsonist</td>
+                                <td style="padding: 12px; color: #88ccff;"><img src="assets/diamond_chestplate_enchant_24px.gif" alt="Chestplate" style="width: 24px; height: 24px; vertical-align: middle; margin-right: 8px; image-rendering: pixelated;">Chestplate</td>
+                                <td style="padding: 12px; color: #FFAA00;">III</td>
+                                <td style="padding: 12px; color: #ccc;">Slightly increases damage while on fire and reduces fire damage taken.</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                                <td style="padding: 12px; color: #FFAA00; font-weight: 600;">Bloom</td>
+                                <td style="padding: 12px; color: #88ccff;"><img src="assets/diamond_chestplate_enchant_24px.gif" alt="Armor" style="width: 24px; height: 24px; vertical-align: middle; margin-right: 8px; image-rendering: pixelated;">Armor</td>
+                                <td style="padding: 12px; color: #FFAA00;">IV</td>
+                                <td style="padding: 12px; color: #ccc;">On death, fully heals all faction allies within a 4/6/8/10 block radius.</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                                <td style="padding: 12px; color: #FFAA00; font-weight: 600;">Diminish</td>
+                                <td style="padding: 12px; color: #88ccff;"><img src="assets/diamond_chestplate_enchant_24px.gif" alt="Armor" style="width: 24px; height: 24px; vertical-align: middle; margin-right: 8px; image-rendering: pixelated;">Armor</td>
+                                <td style="padding: 12px; color: #FFAA00;">III</td>
+                                <td style="padding: 12px; color: #ccc;">Chance to activate and prevent the next attack from dealing more than half of the last attack's damage.</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                                <td style="padding: 12px; color: #FFAA00; font-weight: 600;">Headless</td>
+                                <td style="padding: 12px; color: #88ccff;"><img src="assets/diamond_sword_enchant_24px.gif" alt="Weapon" style="width: 24px; height: 24px; vertical-align: middle; margin-right: 8px; image-rendering: pixelated;">Weapon</td>
+                                <td style="padding: 12px; color: #FFAA00;">V</td>
+                                <td style="padding: 12px; color: #ccc;">Chance to instantly kill mobs below a certain health threshold.</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                                <td style="padding: 12px; color: #FFAA00; font-weight: 600;">Soulbound</td>
+                                <td style="padding: 12px; color: #88ccff;"><img src="assets/diamond_sword_enchant_24px.gif" alt="All Items" style="width: 24px; height: 24px; vertical-align: middle; margin-right: 8px; image-rendering: pixelated;">All Items</td>
+                                <td style="padding: 12px; color: #FFAA00;">I</td>
+                                <td style="padding: 12px; color: #ccc;">Item returns to your inventory upon death.</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                                <td style="padding: 12px; color: #FFAA00; font-weight: 600;">Explosive</td>
+                                <td style="padding: 12px; color: #88ccff;"><img src="assets/bow.png" alt="Bow" style="width: 24px; height: 24px; vertical-align: middle; margin-right: 8px; image-rendering: pixelated;">Bow</td>
+                                <td style="padding: 12px; color: #FFAA00;">II</td>
+                                <td style="padding: 12px; color: #ccc;">Arrows explode on impact, dealing area damage.</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                                <td style="padding: 12px; color: #FFAA00; font-weight: 600;">Sniper</td>
+                                <td style="padding: 12px; color: #88ccff;"><img src="assets/bow.png" alt="Bow" style="width: 24px; height: 24px; vertical-align: middle; margin-right: 8px; image-rendering: pixelated;">Bow</td>
+                                <td style="padding: 12px; color: #FFAA00;">VI</td>
+                                <td style="padding: 12px; color: #ccc;">Deals increased damage when hitting the head.</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                                <td style="padding: 12px; color: #FFAA00; font-weight: 600;">Drill</td>
+                                <td style="padding: 12px; color: #88ccff;"><img src="assets/pickaxe.png" alt="Tool" style="width: 24px; height: 24px; vertical-align: middle; margin-right: 8px; image-rendering: pixelated;">Tool</td>
+                                <td style="padding: 12px; color: #FFAA00;">I</td>
+                                <td style="padding: 12px; color: #ccc;">Breaks blocks in a 3x3 area pattern when mining.</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 12px; color: #FFAA00; font-weight: 600;">Courage</td>
+                                <td style="padding: 12px; color: #88ccff;"><img src="assets/diamond_chestplate_enchant_24px.gif" alt="Armor" style="width: 24px; height: 24px; vertical-align: middle; margin-right: 8px; image-rendering: pixelated;">Armor</td>
+                                <td style="padding: 12px; color: #FFAA00;">III</td>
+                                <td style="padding: 12px; color: #ccc;">Increases maximum health. Level 1-2: +2 HP each, Level 3: +1 HP.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <!-- Mythic Enchants -->
+                <h3 style="color: #FF55FF; font-size: 24px; margin-top: 40px; margin-bottom: 20px; border-bottom: 1px solid rgba(255,85,255,0.3); padding-bottom: 10px;">Mythic Enchants</h3>
+                <div style="background: rgba(0,0,0,0.4); border-radius: 8px; overflow: hidden; margin-bottom: 30px;">
+                    <table style="width: 100%; border-collapse: collapse;">
+                        <thead>
+                            <tr style="background: rgba(0,0,0,0.6);">
+                                <th style="padding: 12px; text-align: left; color: #fff; font-weight: 600; border-bottom: 2px solid rgba(255,85,255,0.5);">Name</th>
+                                <th style="padding: 12px; text-align: left; color: #fff; font-weight: 600; border-bottom: 2px solid rgba(255,85,255,0.5);">Applies to</th>
+                                <th style="padding: 12px; text-align: left; color: #fff; font-weight: 600; border-bottom: 2px solid rgba(255,85,255,0.5);">Max Level</th>
+                                <th style="padding: 12px; text-align: left; color: #fff; font-weight: 600; border-bottom: 2px solid rgba(255,85,255,0.5);">Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                                <td style="padding: 12px; color: #FF55FF; font-weight: 600;">Bleed</td>
+                                <td style="padding: 12px; color: #88ccff;"><img src="assets/diamond_sword_enchant_24px.gif" alt="Sword" style="width: 24px; height: 24px; vertical-align: middle; margin-right: 8px; image-rendering: pixelated;">Sword</td>
+                                <td style="padding: 12px; color: #FF55FF;">III</td>
+                                <td style="padding: 12px; color: #ccc;">Chance to inflict bleeding damage over time on your enemies.</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                                <td style="padding: 12px; color: #FF55FF; font-weight: 600;">Lightning</td>
+                                <td style="padding: 12px; color: #88ccff;"><img src="assets/diamond_sword_enchant_24px.gif" alt="Weapon" style="width: 24px; height: 24px; vertical-align: middle; margin-right: 8px; image-rendering: pixelated;">Weapon</td>
+                                <td style="padding: 12px; color: #FF55FF;">V</td>
+                                <td style="padding: 12px; color: #ccc;">Chance to strike enemies with lightning on hit.</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                                <td style="padding: 12px; color: #FF55FF; font-weight: 600;">Daze</td>
+                                <td style="padding: 12px; color: #88ccff;"><img src="assets/diamond_sword_enchant_24px.gif" alt="Weapon" style="width: 24px; height: 24px; vertical-align: middle; margin-right: 8px; image-rendering: pixelated;">Weapon</td>
+                                <td style="padding: 12px; color: #FF55FF;">V</td>
+                                <td style="padding: 12px; color: #ccc;">Chance to slow and weaken enemies on hit.</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                                <td style="padding: 12px; color: #FF55FF; font-weight: 600;">Snare</td>
+                                <td style="padding: 12px; color: #88ccff;"><img src="assets/diamond_sword_enchant_24px.gif" alt="Weapon" style="width: 24px; height: 24px; vertical-align: middle; margin-right: 8px; image-rendering: pixelated;">Weapon</td>
+                                <td style="padding: 12px; color: #FF55FF;">V</td>
+                                <td style="padding: 12px; color: #ccc;">Chance to root enemies in place on hit.</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                                <td style="padding: 12px; color: #FF55FF; font-weight: 600;">Swarm</td>
+                                <td style="padding: 12px; color: #88ccff;"><img src="assets/diamond_sword_enchant_24px.gif" alt="Weapon" style="width: 24px; height: 24px; vertical-align: middle; margin-right: 8px; image-rendering: pixelated;">Weapon</td>
+                                <td style="padding: 12px; color: #FF55FF;">V</td>
+                                <td style="padding: 12px; color: #ccc;">Spawns helpful entities to attack your enemies.</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                                <td style="padding: 12px; color: #FF55FF; font-weight: 600;">Duelist</td>
+                                <td style="padding: 12px; color: #88ccff;"><img src="assets/diamond_sword_enchant_24px.gif" alt="Weapon" style="width: 24px; height: 24px; vertical-align: middle; margin-right: 8px; image-rendering: pixelated;">Weapon</td>
+                                <td style="padding: 12px; color: #FF55FF;">V</td>
+                                <td style="padding: 12px; color: #ccc;">Increases damage in 1v1 combat situations.</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                                <td style="padding: 12px; color: #FF55FF; font-weight: 600;">Valor</td>
+                                <td style="padding: 12px; color: #88ccff;"><img src="assets/diamond_sword_enchant_24px.gif" alt="Weapon" style="width: 24px; height: 24px; vertical-align: middle; margin-right: 8px; image-rendering: pixelated;">Weapon</td>
+                                <td style="padding: 12px; color: #FF55FF;">V</td>
+                                <td style="padding: 12px; color: #ccc;">Grants strength and resistance when fighting multiple enemies.</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                                <td style="padding: 12px; color: #FF55FF; font-weight: 600;">Silence</td>
+                                <td style="padding: 12px; color: #88ccff;"><img src="assets/diamond_sword_enchant_24px.gif" alt="Weapon" style="width: 24px; height: 24px; vertical-align: middle; margin-right: 8px; image-rendering: pixelated;">Weapon</td>
+                                <td style="padding: 12px; color: #FF55FF;">V</td>
+                                <td style="padding: 12px; color: #ccc;">Chance to silence enemies, preventing activation of their custom enchants for a period of time.</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                                <td style="padding: 12px; color: #FF55FF; font-weight: 600;">Bandit</td>
+                                <td style="padding: 12px; color: #88ccff;"><img src="assets/diamond_sword_enchant_24px.gif" alt="Weapon" style="width: 24px; height: 24px; vertical-align: middle; margin-right: 8px; image-rendering: pixelated;">Weapon</td>
+                                <td style="padding: 12px; color: #FF55FF;">III</td>
+                                <td style="padding: 12px; color: #ccc;">Chance to steal XP from players or mobs.</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                                <td style="padding: 12px; color: #FF55FF; font-weight: 600;">Slingshot</td>
+                                <td style="padding: 12px; color: #88ccff;"><img src="assets/diamond_sword_enchant_24px.gif" alt="Weapon" style="width: 24px; height: 24px; vertical-align: middle; margin-right: 8px; image-rendering: pixelated;">Weapon</td>
+                                <td style="padding: 12px; color: #FF55FF;">IV</td>
+                                <td style="padding: 12px; color: #ccc;">Chance to deal double or tripled knockback on hit.</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                                <td style="padding: 12px; color: #FF55FF; font-weight: 600;">Adamantite</td>
+                                <td style="padding: 12px; color: #88ccff;"><img src="assets/diamond_sword_enchant_24px.gif" alt="All Items" style="width: 24px; height: 24px; vertical-align: middle; margin-right: 8px; image-rendering: pixelated;">All Items</td>
+                                <td style="padding: 12px; color: #FF55FF;">V</td>
+                                <td style="padding: 12px; color: #ccc;">Increases item durability and prevents breaking.</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                                <td style="padding: 12px; color: #FF55FF; font-weight: 600;">Telepathy</td>
+                                <td style="padding: 12px; color: #88ccff;"><img src="assets/pickaxe.png" alt="Tool" style="width: 24px; height: 24px; vertical-align: middle; margin-right: 8px; image-rendering: pixelated;">Tool</td>
+                                <td style="padding: 12px; color: #FF55FF;">I</td>
+                                <td style="padding: 12px; color: #ccc;">Automatically sends mined items directly to your inventory.</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                                <td style="padding: 12px; color: #FF55FF; font-weight: 600;">Auto Smelt</td>
+                                <td style="padding: 12px; color: #88ccff;"><img src="assets/pickaxe.png" alt="Tool" style="width: 24px; height: 24px; vertical-align: middle; margin-right: 8px; image-rendering: pixelated;">Tool</td>
+                                <td style="padding: 12px; color: #FF55FF;">I</td>
+                                <td style="padding: 12px; color: #ccc;">Automatically smelts ores and certain blocks when mined.</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                                <td style="padding: 12px; color: #FF55FF; font-weight: 600;">Auto Replant</td>
+                                <td style="padding: 12px; color: #88ccff;"><img src="assets/pickaxe.png" alt="Tool" style="width: 24px; height: 24px; vertical-align: middle; margin-right: 8px; image-rendering: pixelated;">Tool</td>
+                                <td style="padding: 12px; color: #FF55FF;">IV</td>
+                                <td style="padding: 12px; color: #ccc;">Chance to automatically replant seed of the crop broken. Uses and removes the seed from the drops.</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                                <td style="padding: 12px; color: #FF55FF; font-weight: 600;">Wild Catch</td>
+                                <td style="padding: 12px; color: #88ccff;"><img src="assets/pickaxe.png" alt="Tool" style="width: 24px; height: 24px; vertical-align: middle; margin-right: 8px; image-rendering: pixelated;">Tool</td>
+                                <td style="padding: 12px; color: #FF55FF;">II</td>
+                                <td style="padding: 12px; color: #ccc;">1% chance to spawn a fishing mob (Level 1: wilderness water, Level 2: +lava)</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                                <td style="padding: 12px; color: #FF55FF; font-weight: 600;">Luck</td>
+                                <td style="padding: 12px; color: #88ccff;"><img src="assets/pickaxe.png" alt="Tool" style="width: 24px; height: 24px; vertical-align: middle; margin-right: 8px; image-rendering: pixelated;">Tool</td>
+                                <td style="padding: 12px; color: #FF55FF;">V</td>
+                                <td style="padding: 12px; color: #ccc;">Increases luck and rare item drop rates.</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                                <td style="padding: 12px; color: #FF55FF; font-weight: 600;">Soul Trap</td>
+                                <td style="padding: 12px; color: #88ccff;"><img src="assets/diamond_sword_enchant_24px.gif" alt="Sword" style="width: 24px; height: 24px; vertical-align: middle; margin-right: 8px; image-rendering: pixelated;">Sword</td>
+                                <td style="padding: 12px; color: #FF55FF;">II</td>
+                                <td style="padding: 12px; color: #ccc;">Chance to put enemies on ender pearl cooldown when you hit them.</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                                <td style="padding: 12px; color: #FF55FF; font-weight: 600;">Cleanse</td>
+                                <td style="padding: 12px; color: #88ccff;"><img src="assets/diamond_chestplate_enchant_24px.gif" alt="Armor" style="width: 24px; height: 24px; vertical-align: middle; margin-right: 8px; image-rendering: pixelated;">Armor</td>
+                                <td style="padding: 12px; color: #FF55FF;">III</td>
+                                <td style="padding: 12px; color: #ccc;">Chance to remove negative effects when hit by an entity.</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                                <td style="padding: 12px; color: #FF55FF; font-weight: 600;">Detonate</td>
+                                <td style="padding: 12px; color: #88ccff;"><img src="assets/diamond_leggings_enchant_24px.gif" alt="Leggings" style="width: 24px; height: 24px; vertical-align: middle; margin-right: 8px; image-rendering: pixelated;">Leggings</td>
+                                <td style="padding: 12px; color: #FF55FF;">III</td>
+                                <td style="padding: 12px; color: #ccc;">Chance to drop TNT when attacked below 50% HP.</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 12px; color: #FF55FF; font-weight: 600;">Recover</td>
+                                <td style="padding: 12px; color: #88ccff;"><img src="assets/diamond_chestplate_enchant_24px.gif" alt="Armor" style="width: 24px; height: 24px; vertical-align: middle; margin-right: 8px; image-rendering: pixelated;">Armor</td>
+                                <td style="padding: 12px; color: #FF55FF;">III</td>
+                                <td style="padding: 12px; color: #ccc;">Chance to grant regeneration when taking damage from entities.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <!-- Rare Enchants -->
+                <h3 style="color: #5555FF; font-size: 24px; margin-top: 40px; margin-bottom: 20px; border-bottom: 1px solid rgba(85,85,255,0.3); padding-bottom: 10px;">Rare Enchants</h3>
+                <div style="background: rgba(0,0,0,0.4); border-radius: 8px; overflow: hidden; margin-bottom: 30px;">
+                    <table style="width: 100%; border-collapse: collapse;">
+                        <thead>
+                            <tr style="background: rgba(0,0,0,0.6);">
+                                <th style="padding: 12px; text-align: left; color: #fff; font-weight: 600; border-bottom: 2px solid rgba(85,85,255,0.5);">Name</th>
+                                <th style="padding: 12px; text-align: left; color: #fff; font-weight: 600; border-bottom: 2px solid rgba(85,85,255,0.5);">Applies to</th>
+                                <th style="padding: 12px; text-align: left; color: #fff; font-weight: 600; border-bottom: 2px solid rgba(85,85,255,0.5);">Max Level</th>
+                                <th style="padding: 12px; text-align: left; color: #fff; font-weight: 600; border-bottom: 2px solid rgba(85,85,255,0.5);">Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                                <td style="padding: 12px; color: #5555FF; font-weight: 600;">Protection</td>
+                                <td style="padding: 12px; color: #88ccff;"><img src="assets/diamond_chestplate_enchant_24px.gif" alt="Armor" style="width: 24px; height: 24px; vertical-align: middle; margin-right: 8px; image-rendering: pixelated;">Armor</td>
+                                <td style="padding: 12px; color: #5555FF;">V</td>
+                                <td style="padding: 12px; color: #ccc;">Reduces all incoming damage.</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                                <td style="padding: 12px; color: #5555FF; font-weight: 600;">Sharpness</td>
+                                <td style="padding: 12px; color: #88ccff;"><img src="assets/diamond_sword_enchant_24px.gif" alt="Weapon" style="width: 24px; height: 24px; vertical-align: middle; margin-right: 8px; image-rendering: pixelated;">Weapon</td>
+                                <td style="padding: 12px; color: #5555FF;">V</td>
+                                <td style="padding: 12px; color: #ccc;">Increases melee damage dealt with your weapon.</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                                <td style="padding: 12px; color: #5555FF; font-weight: 600;">Unbreaking</td>
+                                <td style="padding: 12px; color: #88ccff;"><img src="assets/diamond_sword_enchant_24px.gif" alt="All Items" style="width: 24px; height: 24px; vertical-align: middle; margin-right: 8px; image-rendering: pixelated;">All Items</td>
+                                <td style="padding: 12px; color: #5555FF;">V</td>
+                                <td style="padding: 12px; color: #ccc;">Reduces durability loss on items.</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                                <td style="padding: 12px; color: #5555FF; font-weight: 600;">Efficiency</td>
+                                <td style="padding: 12px; color: #88ccff;"><img src="assets/pickaxe.png" alt="Tool" style="width: 24px; height: 24px; vertical-align: middle; margin-right: 8px; image-rendering: pixelated;">Tool</td>
+                                <td style="padding: 12px; color: #5555FF;">V</td>
+                                <td style="padding: 12px; color: #ccc;">Increases mining speed.</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                                <td style="padding: 12px; color: #5555FF; font-weight: 600;">Fortune</td>
+                                <td style="padding: 12px; color: #88ccff;"><img src="assets/pickaxe.png" alt="Tool" style="width: 24px; height: 24px; vertical-align: middle; margin-right: 8px; image-rendering: pixelated;">Tool</td>
+                                <td style="padding: 12px; color: #5555FF;">III</td>
+                                <td style="padding: 12px; color: #ccc;">Increases the number of items dropped from ores and certain blocks.</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                                <td style="padding: 12px; color: #5555FF; font-weight: 600;">Silk Touch</td>
+                                <td style="padding: 12px; color: #88ccff;"><img src="assets/pickaxe.png" alt="Tool" style="width: 24px; height: 24px; vertical-align: middle; margin-right: 8px; image-rendering: pixelated;">Tool</td>
+                                <td style="padding: 12px; color: #5555FF;">V</td>
+                                <td style="padding: 12px; color: #ccc;">Mines blocks in their original form.</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                                <td style="padding: 12px; color: #5555FF; font-weight: 600;">Fire Aspect</td>
+                                <td style="padding: 12px; color: #88ccff;"><img src="assets/diamond_sword_enchant_24px.gif" alt="Weapon" style="width: 24px; height: 24px; vertical-align: middle; margin-right: 8px; image-rendering: pixelated;">Weapon</td>
+                                <td style="padding: 12px; color: #5555FF;">V</td>
+                                <td style="padding: 12px; color: #ccc;">Sets enemies on fire on hit.</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                                <td style="padding: 12px; color: #5555FF; font-weight: 600;">Frost Aspect</td>
+                                <td style="padding: 12px; color: #88ccff;"><img src="assets/diamond_sword_enchant_24px.gif" alt="Sword" style="width: 24px; height: 24px; vertical-align: middle; margin-right: 8px; image-rendering: pixelated;">Sword</td>
+                                <td style="padding: 12px; color: #5555FF;">II</td>
+                                <td style="padding: 12px; color: #ccc;">Applies slowness to enemies when you hit them.</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                                <td style="padding: 12px; color: #5555FF; font-weight: 600;">Looting</td>
+                                <td style="padding: 12px; color: #88ccff;"><img src="assets/diamond_sword_enchant_24px.gif" alt="Weapon" style="width: 24px; height: 24px; vertical-align: middle; margin-right: 8px; image-rendering: pixelated;">Weapon</td>
+                                <td style="padding: 12px; color: #5555FF;">V</td>
+                                <td style="padding: 12px; color: #ccc;">Increases the number of items dropped by mobs when you kill them.</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                                <td style="padding: 12px; color: #5555FF; font-weight: 600;">Speed</td>
+                                <td style="padding: 12px; color: #88ccff;"><img src="assets/diamond_boots_enchant_24px.gif" alt="Boots" style="width: 24px; height: 24px; vertical-align: middle; margin-right: 8px; image-rendering: pixelated;">Boots</td>
+                                <td style="padding: 12px; color: #5555FF;">II</td>
+                                <td style="padding: 12px; color: #ccc;">Grants permanent speed effect while the armor piece is worn.</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                                <td style="padding: 12px; color: #5555FF; font-weight: 600;">Feather Falling</td>
+                                <td style="padding: 12px; color: #88ccff;"><img src="assets/diamond_boots_enchant_24px.gif" alt="Boots" style="width: 24px; height: 24px; vertical-align: middle; margin-right: 8px; image-rendering: pixelated;">Boots</td>
+                                <td style="padding: 12px; color: #5555FF;">X</td>
+                                <td style="padding: 12px; color: #ccc;">Reduces fall damage taken.</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                                <td style="padding: 12px; color: #5555FF; font-weight: 600;">Aquatic</td>
+                                <td style="padding: 12px; color: #88ccff;"><img src="assets/diamond_helmet_enchant_24px.gif" alt="Helmet" style="width: 24px; height: 24px; vertical-align: middle; margin-right: 8px; image-rendering: pixelated;">Helmet</td>
+                                <td style="padding: 12px; color: #5555FF;">I</td>
+                                <td style="padding: 12px; color: #ccc;">Grants permanent water breathing effect while the helmet is worn.</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                                <td style="padding: 12px; color: #5555FF; font-weight: 600;">Flame</td>
+                                <td style="padding: 12px; color: #88ccff;"><img src="assets/bow.png" alt="Bow" style="width: 24px; height: 24px; vertical-align: middle; margin-right: 8px; image-rendering: pixelated;">Bow</td>
+                                <td style="padding: 12px; color: #5555FF;">II</td>
+                                <td style="padding: 12px; color: #ccc;">Arrows shot from this bow set targets on fire.</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                                <td style="padding: 12px; color: #5555FF; font-weight: 600;">Velocity</td>
+                                <td style="padding: 12px; color: #88ccff;"><img src="assets/bow.png" alt="Bow" style="width: 24px; height: 24px; vertical-align: middle; margin-right: 8px; image-rendering: pixelated;">Bow</td>
+                                <td style="padding: 12px; color: #5555FF;">III</td>
+                                <td style="padding: 12px; color: #ccc;">Increases arrow speed and travel distance.</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                                <td style="padding: 12px; color: #5555FF; font-weight: 600;">Bane</td>
+                                <td style="padding: 12px; color: #88ccff;"><img src="assets/bow.png" alt="Bow" style="width: 24px; height: 24px; vertical-align: middle; margin-right: 8px; image-rendering: pixelated;">Bow</td>
+                                <td style="padding: 12px; color: #5555FF;">V</td>
+                                <td style="padding: 12px; color: #ccc;">Increases damage dealt to mobs and non-players.</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                                <td style="padding: 12px; color: #5555FF; font-weight: 600;">Excavate</td>
+                                <td style="padding: 12px; color: #88ccff;"><img src="assets/pickaxe.png" alt="Tool" style="width: 24px; height: 24px; vertical-align: middle; margin-right: 8px; image-rendering: pixelated;">Tool</td>
+                                <td style="padding: 12px; color: #5555FF;">V</td>
+                                <td style="padding: 12px; color: #ccc;">Mines multiple blocks in an area.</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                                <td style="padding: 12px; color: #5555FF; font-weight: 600;">Haste</td>
+                                <td style="padding: 12px; color: #88ccff;"><img src="assets/pickaxe.png" alt="Tool" style="width: 24px; height: 24px; vertical-align: middle; margin-right: 8px; image-rendering: pixelated;">Tool</td>
+                                <td style="padding: 12px; color: #5555FF;">V</td>
+                                <td style="padding: 12px; color: #ccc;">Grants mining speed bonus.</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                                <td style="padding: 12px; color: #5555FF; font-weight: 600;">Lure</td>
+                                <td style="padding: 12px; color: #88ccff;"><img src="assets/pickaxe.png" alt="Tool" style="width: 24px; height: 24px; vertical-align: middle; margin-right: 8px; image-rendering: pixelated;">Tool</td>
+                                <td style="padding: 12px; color: #5555FF;">V</td>
+                                <td style="padding: 12px; color: #ccc;">Increases fishing bite rate.</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                                <td style="padding: 12px; color: #5555FF; font-weight: 600;">Fresh Delivery</td>
+                                <td style="padding: 12px; color: #88ccff;"><img src="assets/pickaxe.png" alt="Tool" style="width: 24px; height: 24px; vertical-align: middle; margin-right: 8px; image-rendering: pixelated;">Tool</td>
+                                <td style="padding: 12px; color: #5555FF;">V</td>
+                                <td style="padding: 12px; color: #ccc;">Increases food quality from fishing.</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 12px; color: #5555FF; font-weight: 600;">Nourish</td>
+                                <td style="padding: 12px; color: #88ccff;"><img src="assets/pickaxe.png" alt="Tool" style="width: 24px; height: 24px; vertical-align: middle; margin-right: 8px; image-rendering: pixelated;">Tool</td>
+                                <td style="padding: 12px; color: #5555FF;">V</td>
+                                <td style="padding: 12px; color: #ccc;">Restores hunger and health when fishing.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            `
+        };
+        
+        // Add generic content for sections without specific content
+        const genericSections = [
+            'faction-roles', 'faction-raiding', 'faction-warps', 'faction-upgrades', 'faction-claiming', 'faction-quests',
+            'black-market', 'coin-flips', 'fishing', 'gold-shop', 'tutorial', 'economy', 'worlds', 'jackpot',
+            'envoys', 'meteors', 'tournaments', 'world-bosses', 'purge', 'grace', 'bloody-hour', 'bounties', 'enchant-runes',
+            'alchemist', 'battle-pass', 'dust', 'enchant-orbs', 'tempers', 'skills', 'scrolls', 'quests'
+        ];
+        
+        genericSections.forEach(section => {
+            if (!wikiContent[section]) {
+                const title = section.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
+                wikiContent[section] = {
+                    title: title,
+                    content: `
+                        <h2>${title}</h2>
+                        <div style="background: rgba(255,255,255,0.05); padding: 20px; border-radius: 8px; margin: 15px 0;">
+                            <p><i class="fas fa-info-circle"></i> This section is currently being updated with detailed information.</p>
+                            <p>Check back soon or ask on our <a href="https://discord.gg/RzqTEPwkKt" style="color: #5865f2;">Discord</a> for more information!</p>
+                        </div>
+                    `
+                };
+            }
+        });
+        
+        // Enchant rarity color mapping
+        const enchantRarityColors = {
+            // RARITY_RARE (Blue)
+            'Protection': '#5555FF',
+            'Unbreaking': '#5555FF',
+            'Sharpness': '#5555FF',
+            'Efficiency': '#5555FF',
+            'Speed': '#5555FF',
+            // RARITY_MYTHIC (Light Purple/Pink)
+            // RARITY_COSMIC (Gold)
+            'Evade': '#FFAA00',
+            'Berserk': '#FFAA00',
+            'Sunder': '#FFAA00',
+            'Adrenaline': '#FFAA00',
+            // RARITY_DIVINE (Aqua/Cyan)
+            // RARITY_SHADOW (Dark Red)
+        };
+        
+        // Function to format enchant string with colors
+        function formatEnchants(enchantString) {
+            if (!enchantString) return '';
+            
+            // Split by comma and process each enchant
+            const enchants = enchantString.split(',').map(e => e.trim());
+            return enchants.map(enchant => {
+                // Extract enchant name and level (e.g., "Protection V" or "Evade III" or "Efficiency II")
+                // Match pattern: word(s) followed by space and roman numerals or numbers
+                const match = enchant.match(/^([A-Za-z]+)\s+([IVX]+|\d+)$/);
+                if (match) {
+                    const name = match[1];
+                    const level = match[2];
+                    const color = enchantRarityColors[name] || '#ffffff'; // Default to white if not found
+                    return `<span style="color: ${color};">${name} ${level}</span>`;
+                }
+                // If no match, try to find just the name
+                const nameMatch = enchant.match(/^([A-Za-z]+)$/);
+                if (nameMatch) {
+                    const name = nameMatch[1];
+                    const color = enchantRarityColors[name] || '#ffffff';
+                    return `<span style="color: ${color};">${name}</span>`;
+                }
+                // Fallback: return as-is with default color
+                return `<span style="color: #ffffff;">${enchant}</span>`;
+            }).join(', ');
+        }
+        
+        $(document).ready(function() {
+            // Handle wiki link clicks (using event delegation for dynamically loaded content)
+            $(document).on('click', '.wiki-link', function(e) {
+                e.preventDefault();
+                const section = $(this).data('section');
+                showContent(section);
+            });
+            
+            // Handle back button
+            $('#back-to-wiki').on('click', function() {
+                showMainWiki();
+            });
+            
+            function showContent(section) {
+                const content = wikiContent[section];
+                if (content) {
+                    $('#content-container').html(content.content);
+                    $('#wiki-main-content').fadeOut(300, function() {
+                        $('#wiki-intro').fadeOut(300);
+                        $('#wiki-content-display').fadeIn(300);
+                        // Scroll to top of content
+                        $('.wiki-content').animate({ scrollTop: 0 }, 300);
+                        
+                        // Format enchant strings in kit tables after content is loaded
+                        if (section === 'kits-sacred-kits') {
+                            $('#content-container').find('td').each(function() {
+                                const $td = $(this);
+                                const text = $td.text().trim();
+                                // Check if this cell contains enchant names
+                                if (text.match(/\b(Protection|Unbreaking|Sharpness|Efficiency|Evade|Speed|Berserk|Sunder|Adrenaline)\s+[IVX\d]+\b/i)) {
+                                    $td.html(formatEnchants(text));
+                                }
+                            });
+                        }
+                    });
+                }
+            }
+            
+            function showMainWiki() {
+                $('#wiki-content-display').fadeOut(300, function() {
+                    $('#wiki-intro').fadeIn(300);
+                    $('#wiki-main-content').fadeIn(300);
+                    // Scroll to top
+                    $('.wiki-content').animate({ scrollTop: 0 }, 300);
+                });
+            }
+        });
+    </script>
 </body>
 </html>
